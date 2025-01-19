@@ -12,6 +12,7 @@ public class CCIContext : DbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet <Translation> Translations { get; set; }
     public DbSet<Notary> Notaries { get; set; }
+    public DbSet<ProjectManager> ProjectManagers { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Подключение к базе данных SQLite
