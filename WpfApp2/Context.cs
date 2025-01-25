@@ -4,7 +4,6 @@ using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Sqlite;
-
 public class CCIContext : DbContext
 {
     public DbSet <Customer> Customers { get; set; }
@@ -16,7 +15,7 @@ public class CCIContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Подключение к базе данных SQLite
-        optionsBuilder.UseSqlite("Data Source=CCI.db");
+        optionsBuilder.UseSqlite("Data Source=C:\\projectsC#\\EntityTask1\\WpfApp2\\CCI.db");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

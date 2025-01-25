@@ -23,4 +23,19 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void CreateOrder_OnClick(object sender, RoutedEventArgs e)
+    {
+        Frame1.Source = new Uri("CreateOrder.xaml", UriKind.Relative);
+    }
+
+    private void DeleteOrder_OnClick(object sender, RoutedEventArgs e)
+    {
+        
+    }
+
+    private void FindOrder_OnClick(object sender, RoutedEventArgs e)
+    {
+        
+    }
 }

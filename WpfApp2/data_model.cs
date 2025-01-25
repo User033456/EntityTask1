@@ -21,7 +21,7 @@ public class Translation
     public string OriginLanguage { get; set; } // оригинальный язык
     public string ForeignLanguage { get; set; } // языки, на которые надо переводить 
     public string Notes { get; set; } // примечания к переводу 
-    public string Price { get; set; } // цена перевода
+    public int Price { get; set; } // цена перевода
     public string OutputFormat { get; set; } // выходной формат данных
     public string InputFormat { get; set; } // входной формат данных 
     public int EmployeeId { get; set; } // Айди переводчика (ключ)
