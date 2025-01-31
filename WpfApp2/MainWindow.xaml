@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#403e3e">
+        Title="MainWindow" Height="450" Width="800" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
      <Window.Resources>
          <!-- Style for MenuItem with white text and borders matching the window's background -->
          <!-- Menu Style -->
@@ -78,21 +78,21 @@
         </Setter>
     </Style>
      </Window.Resources>
-    <Grid>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid.ColumnDefinitions>
-      
+      <ColumnDefinition Width="*"></ColumnDefinition>
     </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Grid.Column="0"  VerticalAlignment="Top">
             <Button Name = "CreateOrder" Content="Создать заявку" HorizontalAlignment="Stretch" Click="CreateOrder_OnClick"></Button>
             <Button Name = "DeleteOrder" Content="Удалить заявку" HorizontalAlignment="Stretch" Click="DeleteOrder_OnClick"></Button>
             <Button Name = "FindOrder" Content="Найти заявку" HorizontalAlignment="Stretch" Click="FindOrder_OnClick"></Button>
-            
+            <Button Name = "AllOrders" Content="Все заявки" HorizontalAlignment="Stretch" Click="AllOrders_OnClick"></Button>
         </Menu>
-        <Frame Grid.Column="1" Name="Frame1" Source="CreateOrder.xaml" Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             
         </Frame>
     </Grid>
