@@ -41,7 +41,7 @@
         <TextBlock Grid.Column="0" Grid.Row="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите сумму оплаты</TextBlock>
         <TextBox Grid.Column="0" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PriseTextBox"></TextBox>
         <TextBlock Grid.Column="0" Grid.Row="11" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Юридическое лицо</TextBlock>
-        <CheckBox Grid.Column="0" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Введите количество слов" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
         <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "WordCounterTextBox"></TextBox>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Введите язык оригинала" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>

@@ -28,16 +28,19 @@ public class CCIContext : DbContext
             .HasForeignKey(o => o.CustomerId);
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Projectmanager)
-            .WithMany(e => e.Orders) 
-            .HasForeignKey(o => o.ProjectManagerId);
+            .WithMany(e => e.Orders)
+            .HasForeignKey(o => o.ProjectManagerId)
+            .IsRequired(false);
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Notaries)
             .WithMany(n => n.Orders)
-            .HasForeignKey(k => k.NotariesID);
+            .HasForeignKey(k => k.NotariesID)
+            .IsRequired(false);
         modelBuilder.Entity<Translation>()
             .HasOne(e => e.Translator)
             .WithMany(e => e.Translations)
-            .HasForeignKey(o => o.EmployeeId);
+            .HasForeignKey(o => o.EmployeeId)
+            .IsRequired(false);
         modelBuilder.Entity<Translation>()
             .HasOne(o => o.order)
             .WithMany(o => o.Translations)
