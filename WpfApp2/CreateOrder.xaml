@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d"
       Title="CreateOrder" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    
     <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>

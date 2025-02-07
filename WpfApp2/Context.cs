@@ -15,7 +15,8 @@ public class CCIContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Подключение к базе данных SQLite
-        optionsBuilder.UseSqlite("Data Source=C:\\projectsC#\\EntityTask1\\WpfApp2\\CCI.db");
+        //optionsBuilder.UseSqlite("Data Source=C:\\projectsC#\\EntityTask1\\WpfApp2\\CCI.db");
+        optionsBuilder.UseNpgsql("Host=localhost;" + "Database=CCI;" + "Username=user;" + "Password=RomaClown;");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -26,8 +26,8 @@ public static class Formats
         }
         else
         {
-            if (ISNumber(line[0]) && ISNumber(line[1]) && line[2] == '.' && ISNumber(line[3]) && ISNumber(line[4]) &&
-                line[5] == '.' &&
+            if (ISNumber(line[0]) && ISNumber(line[1]) && line[2] == '-' && ISNumber(line[3]) && ISNumber(line[4]) &&
+                line[5] == '-' &&
                 ISNumber(line[6]) && ISNumber(line[7]) && ISNumber(line[8]) && ISNumber(line[9]))
             {
                 result = true;

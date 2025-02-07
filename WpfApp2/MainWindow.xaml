@@ -89,8 +89,8 @@
         <Menu Grid.Row="0" Grid.Column="0"  VerticalAlignment="Top">
             <Button Name = "CreateOrder" Content="Создать заявку" HorizontalAlignment="Stretch" Click="CreateOrder_OnClick"></Button>
             <Button Name = "DeleteOrder" Content="Удалить заявку" HorizontalAlignment="Stretch" Click="DeleteOrder_OnClick"></Button>
-            <Button Name = "FindOrder" Content="Найти заявку" HorizontalAlignment="Stretch" Click="FindOrder_OnClick"></Button>
-            <Button Name = "AllOrders" Content="Все заявки" HorizontalAlignment="Stretch" Click="AllOrders_OnClick"></Button>
+            <Button Name = "FindOrder" Content="Изменить статус заявки" HorizontalAlignment="Stretch" Click="FindOrder_OnClick"></Button>
+            <Button Name = "AllOrders" Content="Просмотреть все заявки" HorizontalAlignment="Stretch" Click="AllOrders_OnClick"></Button>
         </Menu>
         <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             

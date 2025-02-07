@@ -8,18 +8,18 @@ public partial class CreateOrder : Page
     public CreateOrder()
     {
         InitializeComponent();
-        TextBoxes = new List<TextBox>()
-        {
-            FiotTextBox, EmailTextBox, AdressTextBox,PerevodTipeTextBox, PriseTextBox, WordCounterTextBox, OriginalLanguageTextBox,ForeignLanguageTextBox,
-            InputFormatTextBox,OutPutTextBox,DateOfCreateOrder, PlaneDateOfEndTextBox,NotesTextBox
-        };
+        
     }
 
     public List<TextBox> TextBoxes = new List<TextBox>();
     
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
-       
+        TextBoxes = new List<TextBox>()
+        {
+            FiotTextBox, EmailTextBox, AdressTextBox,PerevodTipeTextBox, PriseTextBox, WordCounterTextBox, OriginalLanguageTextBox,ForeignLanguageTextBox,
+            InputFormatTextBox,OutPutTextBox,DateOfCreateOrder, PlaneDateOfEndTextBox,NotesTextBox
+        };
         bool flag = true;
         foreach (var i in TextBoxes)
         {
@@ -57,16 +57,17 @@ public partial class CreateOrder : Page
                         order.CustomerId = existingCustomer.Id;
                     }
                 }
-                if (Formats.DateFormat(DateOfCreateOrder.Text.ToString()) && Formats.DateFormat(PlaneDateOfEndTextBox.Text.ToString()))
+                if (Formats.DateFormat(DateOfCreateOrder.Text.ToString()) && Formats.DateFormat(PlaneDateOfEndTextBox.Text.ToString()) && Formats.OnlyNumbers(PriseTextBox.Text.ToString()))
                 {
-                    order.RequestDate = DateTime.Parse(DateOfCreateOrder.Text);
-                    order.PlannedEndDate = DateTime.Parse(PlaneDateOfEndTextBox.Text.ToString());
+                    order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());
+                    order.PlannedEndDate = DateOnly.Parse(PlaneDateOfEndTextBox.Text.ToString());
                     order.Price = int.Parse(PriseTextBox.Text);
                     order.RealEndDate = null;
                     order.NotariesID = null;
                     order.ProjectManagerId = null;
                     order.Projectmanager = null;
                     order.Notaries = null;
+                    order.status = 0;
                     context.Orders.Add(order);
                     context.SaveChanges();
                     translation.Type = PerevodTipeTextBox.Text;
@@ -78,9 +79,8 @@ public partial class CreateOrder : Page
                         translation.InputFormat = InputFormatTextBox.Text;
                         translation.OutputFormat = OutPutTextBox.Text;
                         translation.Notes = NotesTextBox.Text;
-                        var existingCustomer = context.Orders.FirstOrDefault(c => c.Price == int.Parse(PriseTextBox.Text));
-                        translation.OrderId =existingCustomer.Id;
-                        
+                        //var existingCustomer = context.Orders.FirstOrDefault(c => c.Price == int.Parse(PriseTextBox.Text));
+                        translation.OrderId =order.Id;
                         context.Translations.Add(translation);
                         context.SaveChanges();
                         MessageBox.Show("Заявка успешно создана");

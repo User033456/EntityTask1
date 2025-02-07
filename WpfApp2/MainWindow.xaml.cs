@@ -31,7 +31,7 @@ public partial class MainWindow : Window
 
     private void DeleteOrder_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        Frame1.Source = new Uri("DeleteOrder.xaml", UriKind.Relative);
     }
 
     private void FindOrder_OnClick(object sender, RoutedEventArgs e)

@@ -32,9 +32,9 @@ public class Order
 {
     public int Id { get; set; } // ID
     public int Price { get; set; } // цена перевода
-    public DateTime RequestDate { get; set; } // дата подачи
-    public DateTime PlannedEndDate { get; set; } // плановая дата окончания
-    public DateTime? RealEndDate { get; set; } // Фактическая дата окончания
+    public DateOnly RequestDate { get; set; } // дата подачи
+    public DateOnly PlannedEndDate { get; set; } // плановая дата окончания
+    public DateOnly? RealEndDate { get; set; } // Фактическая дата окончания
     public Customer Customer { get; set; } //  Заказчик
     public int CustomerId { get; set; } // айди заказчика (ключ)
     public ProjectManager? Projectmanager { get; set; } // Глава заказа или кто он там
@@ -42,7 +42,7 @@ public class Order
     public int? NotariesID {get; set;} // Айди нотариуса (ключ)
     public Notary Notaries { get; set; } // нотариус
     public List<Translation> Translations { get; set; } 
-    public string? Status { get; set; }
+    public int? status { get; set; }
 }
 // Короче, как я подумал. Там же есть глава проекта или что - то такое. Это не совсем переводчик.
 // Лучше вынести в отдельный класс управляющего. Мб ошибаюсь. И поскольку в одном заказе может
