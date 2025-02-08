@@ -11,7 +11,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Удаление заявки"></TextBlock>
@@ -30,6 +30,35 @@
                   ItemsSource="{Binding orders}"
                   MouseDoubleClick="OrdersGrid_OnMouseDoubleClick"
                   >
+            <DataGrid.ContextMenu>
+                <ContextMenu Background="#403e3e" BorderBrush="White">
+                    <MenuItem Header="Удалить заявку" Click="MenuItem_OnClick" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Изменить статус" Click="ChangeStatusMenuItem_OnClick" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Назначить Менеджера проекта" Click="ChangeProjectManagerMenuItem_OnClick" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Указать нотариуса" Click="ChangeNotariesMenuItem_OnClick" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Указать дату завершения" Click="SetRealEndDateMenuItem_OnClick" Foreground="White">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#403e3e"/>
@@ -48,7 +77,7 @@
                 <DataGridTextColumn Header="Дата заявки" Binding="{Binding RequestDate}" Width="*"/>
                 <DataGridTextColumn Header="Планируемая дата завершения" Binding="{Binding PlannedEndDate}" Width="*"/>
                 <DataGridTextColumn Header="Дата завершения" Binding="{Binding RealEndDate}" Width="*" />
-                <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*" />
+                <DataGridTextColumn Header="Статус" Binding="{Binding status}" Width="*" />
                 <DataGridTextColumn Header="Менеджер проекта" Binding="{Binding ProjectManagerId}" Width="*" />
                 <DataGridTextColumn Header="Клиент" Binding="{Binding CustomerId}" Width="*"/>
                 <DataGridTextColumn Header="Нотариус" Binding="{Binding NotariesID}" Width="*"/>

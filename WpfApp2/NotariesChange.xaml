@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfApp2.NotariesChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="NotariesChange" Background="#403e3e" Height="150" Width="200">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="0.2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0">Введите ФИО Нотариуса </TextBlock>
+                <TextBox Grid.Row="1" Name = "TextBox" Background="#403e3e"></TextBox>
+                <Button Grid.Row="2" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
+        </Grid>
+</Window>

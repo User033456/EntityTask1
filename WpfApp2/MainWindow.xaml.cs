@@ -39,7 +39,7 @@ public partial class MainWindow : Window
         
     }
 
-    private void AllOrders_OnClick(object sender, RoutedEventArgs e)
+    private void Translators_OnClick(object sender, RoutedEventArgs e)
     {
         
     }

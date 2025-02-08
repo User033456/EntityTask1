@@ -20,6 +20,26 @@ public partial class DeleteOrder : Page
             OrdersGrid.ItemsSource = orders;
         }
     }
+
+    private bool SelectedItemCheck()
+    {
+        if (OrdersGrid.SelectedItem != null)
+        {
+            if (OrdersGrid.SelectedItems.Count == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+            
+    }
     private void LoadOrders()
     {
         using (var context = new CCIContext())
@@ -33,6 +53,18 @@ public partial class DeleteOrder : Page
         }
     }
     private void OrdersGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+    {
+       
+    }
+
+    public void UpdateDataGrid()
+    {
+        LoadOrders();
+        OrdersGrid.ItemsSource = orders;
+        
+    }
+
+    private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         if (OrdersGrid.SelectedItem != null)
         {
@@ -70,8 +102,45 @@ public partial class DeleteOrder : Page
         }
     }
 
-    public void UpdateDataGrid()
+    private void ChangeStatusMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
-        OrdersGrid.ItemsSource = orders;
+        if (SelectedItemCheck())
+        {
+            var order = OrdersGrid.SelectedItem as Order;
+            var window = new ChangeStatus(order.Id);
+            window.ShowDialog();
+            UpdateDataGrid();
+        }
+    }
+    private void ChangeProjectManagerMenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (SelectedItemCheck())
+        {
+            var order = OrdersGrid.SelectedItem as Order;
+            var window = new SetProjectManager(order.Id);
+            window.ShowDialog();
+            UpdateDataGrid();
+        }
+    }
+    private void ChangeNotariesMenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (SelectedItemCheck())
+        {
+            var order = OrdersGrid.SelectedItem as Order;
+            var window = new NotariesChange(order.Id);
+            window.ShowDialog();
+            UpdateDataGrid();
+        }
+    }
+
+    private void SetRealEndDateMenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (SelectedItemCheck())
+        {
+            var order = OrdersGrid.SelectedItem as Order;
+            var window = new SetRealFinishDate(order.Id);
+            window.ShowDialog();
+            UpdateDataGrid();
+        }
     }
 }
