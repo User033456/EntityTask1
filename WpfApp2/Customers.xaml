@@ -1,12 +1,12 @@
-﻿<Page x:Class="WpfApp2.Translators"
+﻿<Page x:Class="WpfApp2.Customers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d"
-      Title="Translators" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      Title="Customers" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
                   HorizontalGridLinesBrush="White"
                   VerticalGridLinesBrush="White"
                   Margin="0,10"
-                  ItemsSource="{Binding  employees}"
+                  ItemsSource="{Binding  customers}"
                   >
            
             <DataGrid.Resources>
@@ -46,7 +46,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Name}" Width="*"/>
-                <DataGridTextColumn Header="Информация" Binding="{Binding Note}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Юридическое лицо" Binding="{Binding isLegalEntity}" Width="*"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

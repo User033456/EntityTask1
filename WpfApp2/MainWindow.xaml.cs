@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using Uri = System.Uri;
 
 namespace WpfApp2;
 
@@ -41,6 +42,26 @@ public partial class MainWindow : Window
 
     private void Translators_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        Frame1.Source = new Uri("Translators.xaml", UriKind.Relative);
+    }
+
+    private void Notaries_OnClick(object sender, RoutedEventArgs e)
+    {
+        Frame1.Source = new Uri("Notaries.xaml", UriKind.Relative);
+    }
+
+    private void ProjectManagers_OnClick(object sender, RoutedEventArgs e)
+    {
+        Frame1.Source = new Uri("ProjectManagers.xaml", UriKind.Relative);
+    }
+
+    private void Translations_OnClick(object sender, RoutedEventArgs e)
+    {
+        Frame1.Source = new Uri("Translations.xaml", UriKind.Relative);
+    }
+
+    private void Customers_OnClick(object sender, RoutedEventArgs e)
+    {
+        Frame1.Source = new Uri("Customers.xaml", UriKind.Relative);
     }
 }

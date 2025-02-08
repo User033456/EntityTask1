@@ -29,6 +29,7 @@
                   Margin="0,10"
                   ItemsSource="{Binding orders}"
                   MouseDoubleClick="OrdersGrid_OnMouseDoubleClick"
+                  Sorting="OrdersGrid_OnSorting"
                   >
             <DataGrid.ContextMenu>
                 <ContextMenu Background="#403e3e" BorderBrush="White">

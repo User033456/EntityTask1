@@ -90,6 +90,10 @@
             <Button Name = "CreateOrder" Content="Создать заявку" HorizontalAlignment="Stretch" Click="CreateOrder_OnClick"></Button>
             <Button Name = "DeleteOrder" Content="Все заявки" HorizontalAlignment="Stretch" Click="DeleteOrder_OnClick"></Button>
             <Button Name = "AllOrders" Content="Переводчики" HorizontalAlignment="Stretch" Click="Translators_OnClick"></Button>
+            <Button Name = "Notaries" Content="Нотариусы" HorizontalAlignment="Stretch" Click="Notaries_OnClick"></Button>
+            <Button Name = "ProjectManagers" Content="Менеджеры проектов" HorizontalAlignment="Stretch" Click="ProjectManagers_OnClick"></Button>
+            <Button Name = "Translations" Content="Переводы" HorizontalAlignment="Stretch" Click="Translations_OnClick"></Button>
+            <Button Name = "Customers" Content="Заказчики" HorizontalAlignment="Stretch" Click="Customers_OnClick"></Button>
         </Menu>
         <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             

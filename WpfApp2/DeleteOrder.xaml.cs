@@ -143,4 +143,48 @@ public partial class DeleteOrder : Page
             UpdateDataGrid();
         }
     }
+
+    private  async void OrdersGrid_OnSorting(object sender, DataGridSortingEventArgs e)
+    {
+        string columnName = e.Column.SortMemberPath;
+         await using (var context = new CCIContext())
+        {
+            if (columnName != null)
+            {
+                if (columnName == "Id")
+                {
+                     context.Orders.OrderBy(o => o.Id);
+                }
+                else if (columnName == "RequestDate")
+                {
+                    context.Orders.OrderBy(o => o.RealEndDate);
+                }
+                else if (columnName == "PlannedEndDate")
+                {
+                    context.Orders.OrderBy(o => o.PlannedEndDate);
+                }
+                else if (columnName == "RealEndDate")
+                {
+                    context.Orders.OrderBy(o => o.RealEndDate);
+                }
+                else if (columnName == "status")
+                {
+                    context.Orders.OrderBy(o => o.status);
+                }
+                else if (columnName == "ProjectManagerId")
+                {
+                    context.Orders.OrderBy(o => o.ProjectManagerId);
+                }
+                else if (columnName == "CustomerId")
+                {
+                    context.Orders.OrderBy(o => o.CustomerId);
+                }
+                else if (columnName == "NotariesID")
+                {
+                    context.Orders.OrderBy(o => o.NotariesID);
+                }
+                await context.SaveChangesAsync();
+            }
+        }
+    }
 }
