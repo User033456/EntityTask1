@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace WpfApp2;
 
-public partial class DeleteOrder : Page
+public partial class OrdersPage : Page
 {
     //List<Order> orders = new List<Order>();
     ObservableCollection<Order> orders = new ObservableCollection<Order>();
-    public DeleteOrder()
+    public OrdersPage()
     {
         InitializeComponent();
         
@@ -20,7 +20,10 @@ public partial class DeleteOrder : Page
             OrdersGrid.ItemsSource = orders;
         }
     }
-
+    /// <summary>
+    /// Проверка на то, сколько элементов DataGrid выделено
+    /// </summary>
+    /// <returns></returns>
     private bool SelectedItemCheck()
     {
         if (OrdersGrid.SelectedItem != null)
@@ -40,6 +43,9 @@ public partial class DeleteOrder : Page
         }
             
     }
+    /// <summary>
+    /// Загрузка списка заявок
+    /// </summary>
     private void LoadOrders()
     {
         using (var context = new CCIContext())
@@ -52,18 +58,20 @@ public partial class DeleteOrder : Page
             }
         }
     }
-    private void OrdersGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-       
-    }
-
+    /// <summary>
+    /// Обновление данных DataGrid
+    /// </summary>
     public void UpdateDataGrid()
     {
         LoadOrders();
         OrdersGrid.ItemsSource = orders;
         
     }
-
+    /// <summary>
+    /// Удаление заявки
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         if (OrdersGrid.SelectedItem != null)
@@ -101,7 +109,11 @@ public partial class DeleteOrder : Page
             MessageBox.Show("Вы не выбрали элемент");
         }
     }
-
+    /// <summary>
+    /// Изменение статуса заявки
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ChangeStatusMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         if (SelectedItemCheck())
@@ -112,6 +124,11 @@ public partial class DeleteOrder : Page
             UpdateDataGrid();
         }
     }
+    /// <summary>
+    /// Изменение или назначение менеджера проекта для заявки
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ChangeProjectManagerMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         if (SelectedItemCheck())
@@ -122,6 +139,11 @@ public partial class DeleteOrder : Page
             UpdateDataGrid();
         }
     }
+    /// <summary>
+    /// Измененние или назначения нотариуса заявки
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ChangeNotariesMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         if (SelectedItemCheck())
@@ -132,7 +154,11 @@ public partial class DeleteOrder : Page
             UpdateDataGrid();
         }
     }
-
+    /// <summary>
+    /// Указание даты реального окончания работы над заявкой
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void SetRealEndDateMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
         if (SelectedItemCheck())
@@ -143,7 +169,11 @@ public partial class DeleteOrder : Page
             UpdateDataGrid();
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private  async void OrdersGrid_OnSorting(object sender, DataGridSortingEventArgs e)
     {
         string columnName = e.Column.SortMemberPath;

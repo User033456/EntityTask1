@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="ChangeStatus" Height="100" Width="150">
+        Title="ChangeStatus" Height="120" Width="150">
      <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#3C3C3C"/>
@@ -36,12 +36,16 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,0,2" Background="Gray">
+    <Grid Margin="0,0,0,2" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+        </Grid.RowDefinitions>
         <StackPanel>
-            <RadioButton GroupName="group" Name="Create" Content="Создана" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
-            <RadioButton GroupName="group" Name ="InWork"  Content="В работе" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
-            <RadioButton GroupName="group" Content="Выполнена" Name="Done" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
-            <Button Content="СОХРАНИТЬ" Click="save_click" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <RadioButton Margin="2" GroupName="group" Name="Create" Content="Создана" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
+            <RadioButton  Margin="2" GroupName="group" Name ="InWork"  Content="В работе" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
+            <RadioButton  Margin="2" GroupName="group" Content="Выполнена" Name="Done" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
         </StackPanel>
+        <Button Content="СОХРАНИТЬ" Grid.Row="1" Click="save_click" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

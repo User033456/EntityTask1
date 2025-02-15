@@ -21,27 +21,30 @@ public partial class CreateOrder : Page
             InputFormatTextBox,OutPutTextBox,DateOfCreateOrder, PlaneDateOfEndTextBox,NotesTextBox
         };
         bool flag = true;
+        // Проверка всех TextBox на наличие хоть каких - то данных
         foreach (var i in TextBoxes)
         {
-            if (i.Text.Length == 0)
+            if (Formats.isNullTextBox(i) == false)
             {
                 flag = false;
                 break;
             }
         }
 
-        if (flag)
+        if (flag && Formats.EmailFormat(EmailTextBox.Text.ToString()))
         {
             using (var context = new CCIContext())
             {
                 Order order = new Order();
                 Customer customer = new Customer();
                 Translation translation = new Translation();
+                // заполнение данных заказчика
                 customer.Name = FiotTextBox.Text;
                 customer.Address = AdressTextBox.Text;
                 customer.Email = EmailTextBox.Text;
                 customer.isLegalEntity = IsLegalTextBox.IsChecked.Value;
                 bool CustomerFlag = context.Customers.Any(c => c.Email == EmailTextBox.Text);
+                // Если заказчика не существует, он будет создан
                 if (CustomerFlag == false)
                 {
                     context.Customers.Add(customer);
@@ -49,6 +52,7 @@ public partial class CreateOrder : Page
                     var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
                     order.CustomerId = customer.Id;
                 }
+                // Если заказчик существует, программа найдёт его Id
                 else
                 {
                     var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
@@ -57,7 +61,8 @@ public partial class CreateOrder : Page
                         order.CustomerId = existingCustomer.Id;
                     }
                 }
-                if (Formats.DateFormat(DateOfCreateOrder.Text.ToString()) && Formats.DateFormat(PlaneDateOfEndTextBox.Text.ToString()) && Formats.OnlyNumbers(PriseTextBox.Text.ToString()))
+                // Если формат всех дат правильный и текстовых полей правильный, можно перейти к оформлению заявки
+                if (Formats.DateFormat(DateOfCreateOrder.Text.ToString()) && Formats.DateFormat(PlaneDateOfEndTextBox.Text.ToString()) && Formats.OnlyNumbers(PriseTextBox.Text.ToString()) && Formats.OnlyNumbers(WordCounterTextBox.Text))
                 {
                     order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());
                     order.PlannedEndDate = DateOnly.Parse(PlaneDateOfEndTextBox.Text.ToString());
@@ -70,22 +75,18 @@ public partial class CreateOrder : Page
                     order.status = 0;
                     context.Orders.Add(order);
                     context.SaveChanges();
+                    // Создание перевода
                     translation.Type = PerevodTipeTextBox.Text;
-                    if (Formats.OnlyNumbers(WordCounterTextBox.Text))
-                    {
-                        translation.WordsCount = int.Parse(WordCounterTextBox.Text);
-                        translation.OriginLanguage = OriginalLanguageTextBox.Text;
-                        translation.ForeignLanguage = ForeignLanguageTextBox.Text;
-                        translation.InputFormat = InputFormatTextBox.Text;
-                        translation.OutputFormat = OutPutTextBox.Text;
-                        translation.Notes = NotesTextBox.Text;
-                        //var existingCustomer = context.Orders.FirstOrDefault(c => c.Price == int.Parse(PriseTextBox.Text));
-                        translation.OrderId =order.Id;
-                        context.Translations.Add(translation);
-                        context.SaveChanges();
-                        MessageBox.Show("Заявка успешно создана");
-                    }
-                    
+                    translation.WordsCount = int.Parse(WordCounterTextBox.Text);
+                    translation.OriginLanguage = OriginalLanguageTextBox.Text;
+                    translation.ForeignLanguage = ForeignLanguageTextBox.Text;
+                    translation.InputFormat = InputFormatTextBox.Text;
+                    translation.OutputFormat = OutPutTextBox.Text;
+                    translation.Notes = NotesTextBox.Text;
+                    translation.OrderId =order.Id;
+                    context.Translations.Add(translation);
+                    context.SaveChanges();
+                    MessageBox.Show("Заявка успешно создана");
                 }
                 else
                 {
@@ -96,16 +97,8 @@ public partial class CreateOrder : Page
         }
         
     }
-
     private void IsLegalTextBox_OnChecked(object sender, RoutedEventArgs e)
     {
-        if (IsLegalTextBox.IsChecked == true)
-        {
-            IsLegalTextBox.IsChecked = false;
-        }
-        else
-        {
-            IsLegalTextBox.IsChecked = true;
-        }
+        
     }
 }
