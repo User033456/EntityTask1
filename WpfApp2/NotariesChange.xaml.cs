@@ -8,20 +8,28 @@ public partial class NotariesChange : Window
     {
         InitializeComponent();
     }
-
+    
     private int Id;
     public NotariesChange(int id)
     {
         InitializeComponent();
         Id = id;
     }
+    /// <summary>
+    /// Обработчик нажатия кнопки для изменения нотариуса
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Button_OnClick(object sender, RoutedEventArgs e)
     {
-        if (TextBox.Text != null && TextBox.Text != "")
+        // Проверка на наличие хоть каких - то данных в TextBox
+        if (Formats.isNullTextBox(TextBox))
         {
             using (var context = new CCIContext())
             {
+                // Проверка сущещствования введённого нотариуса
                 bool Flag = context.Notaries.Any(c => c.Name == TextBox.Text);
+                // Если нотариус существует, его можно привязать к заявке
                 if (Flag)
                 {
                     var Employee = context.Notaries.FirstOrDefault(c => c.Name == TextBox.Text);

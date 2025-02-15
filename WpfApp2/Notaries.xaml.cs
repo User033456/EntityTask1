@@ -11,12 +11,14 @@ public partial class Notaries : Page
         InitializeComponent();
         using (var context = new CCIContext())
         {
-            
             LoadNotaries();
             OrdersGrid.ItemsSource = notaries;
         }
     }
     ObservableCollection<Notary> notaries = new ObservableCollection<Notary>();
+    /// <summary>
+    /// Загрузка таблицы нотариусов в формате ObservableCollection
+    /// </summary>
     private void LoadNotaries()
     {
         using (var context = new CCIContext())
@@ -29,24 +31,35 @@ public partial class Notaries : Page
             }
         }
     }
+    /// <summary>
+    /// Обновление данных в DataGrid
+    /// </summary>
     public void UpdateDataGrid()
     {
         LoadNotaries();
         OrdersGrid.ItemsSource = notaries;
         
     }
+    /// <summary>
+    /// Обработчик нажатия элемента контекстного меню для удаления нотариуса
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
+        // Нотариуса можно удалить, если контекстное меню было вызвано при выборе одной строки DataGrid
         if (OrdersGrid.SelectedItem != null)
         {
             if (OrdersGrid.SelectedItems.Count == 1)
             {
+                // Получение выбранного нотариуса из DataGrid и запрос на подтверждение удаления
                 var notary = OrdersGrid.SelectedItem as Notary;
                 var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
                     {
+                        // Удаление и сохранение данных в бд 
                         context.Notaries.Remove(notary);
                         for (int i = 0; i < notaries.Count; i++)
                         {

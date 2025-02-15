@@ -18,6 +18,9 @@ public partial class ProjectManagers : Page
     }
     
     ObservableCollection<ProjectManager> projectManagers = new ObservableCollection<ProjectManager>();
+    /// <summary>
+    /// Загрузка таблицы менеджеров в формате ObservableCollection
+    /// </summary>
     private void LoadProjectManagers()
     {
         using (var context = new CCIContext())
@@ -30,23 +33,34 @@ public partial class ProjectManagers : Page
             }
         }
     }
+    /// <summary>
+    /// Обновление данных в DataGrid
+    /// </summary>
     public void UpdateDataGrid()
     {
         LoadProjectManagers();
         OrdersGrid.ItemsSource = projectManagers;
     }
+    /// <summary>
+    /// Обработчик нажатия элемента контекстного меню для удаления менеджера
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
+        // Менеджера можно удалить, если контекстное меню было вызвано при выборе одной строки DataGrid
         if (OrdersGrid.SelectedItem != null)
         {
             if (OrdersGrid.SelectedItems.Count == 1)
             {
+                // Получение выбранного менеджера из DataGrid и запрос на подтверждение удаления
                 var manager= OrdersGrid.SelectedItem as ProjectManager;
                 var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
                     {
+                        // Удаление и сохранение данных в бд 
                         context.ProjectManagers.Remove(manager);
                         for (int i = 0; i < projectManagers.Count; i++)
                         {

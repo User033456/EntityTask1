@@ -18,7 +18,7 @@ public partial class ChangeStatus : Window
         InitializeComponent();
         Id = id;
     }
-    
+    // Обработчики нажатия radioButton
     private void radio_button1_click(object sender, RoutedEventArgs e)
     {
         RadioButton important1 = (RadioButton)sender;
@@ -37,6 +37,7 @@ public partial class ChangeStatus : Window
     }
     private void save_click(object sender, RoutedEventArgs e)
     {
+        // назначение статуса заявки
         int status;
         if (Status != null)
         {
@@ -54,6 +55,7 @@ public partial class ChangeStatus : Window
             }
             using (var context = new CCIContext())
             {
+                // сохранение такового 
                 var order = context.Orders.FirstOrDefault(c => c.Id == Id);
                 order.status = status;
                 context.Entry(order).State =EntityState.Modified;

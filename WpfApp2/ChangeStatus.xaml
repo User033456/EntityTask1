@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="ChangeStatus" Height="120" Width="150">
      <Window.Resources>
-        <Style TargetType="Button">
+         <!-- Стиль для кнопок -->
+         <Style TargetType="Button">
             <Setter Property="Background" Value="#3C3C3C"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="#5A5A5A"/>
@@ -28,6 +29,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+         <!-- Стиль для TextBox -->
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#3C3C3C"/>
             <Setter Property="Foreground" Value="White"/>
@@ -41,6 +43,7 @@
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
+        <!-- Контейнер с радио кнопками -->
         <StackPanel>
             <RadioButton Margin="2" GroupName="group" Name="Create" Content="Создана" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>
             <RadioButton  Margin="2" GroupName="group" Name ="InWork"  Content="В работе" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton>

@@ -11,12 +11,12 @@ public partial class Translations : Page
         using (var context = new CCIContext())
         {
             
-            LoadNotaries();
+            LoadTranslations();
             OrdersGrid.ItemsSource =translations;
         }
     }
     ObservableCollection<Translation> translations = new ObservableCollection<Translation>();
-    private void LoadNotaries()
+    private void LoadTranslations()
     {
         using (var context = new CCIContext())
         {

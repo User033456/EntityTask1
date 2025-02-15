@@ -11,11 +11,14 @@ public partial class CreateNotary : Window
 
     private void Button_OnClick(object sender, RoutedEventArgs e)
     {
+        // Проверка всех TextBox на пустоту
         if (TextBox.Text != null && TextBox.Text != "")
         {
             using (var context = new CCIContext())
             {
+                // Проверка существования нотариуса по ФИО
                 bool Flag = context.Notaries.Any(c => c.Name == TextBox.Text);
+                // Если нотариуса с таким ФИО не существует, он будет создан
                 if (Flag == false)
                 {
                     var notary = new Notary();

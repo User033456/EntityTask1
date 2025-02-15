@@ -17,6 +17,9 @@ public partial class Translators : Page
         }
     }
     private ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
+    /// <summary>
+    /// Загрузка таблицы переводчиков в формате ObservableCollection
+    /// </summary>
     private void LoadEmployees()
     {
         using (var context = new CCIContext())
@@ -29,24 +32,35 @@ public partial class Translators : Page
             }
         }
     }
+    /// <summary>
+    /// Обновление данных в DataGrid
+    /// </summary>
     public void UpdateDataGrid()
     {
         LoadEmployees();
         OrdersGrid.ItemsSource = employees;
         
     }
+    /// <summary>
+    /// Обработчик нажатия элемента контекстного меню для удаления переводчика
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
+        // Переводчика можно удалить, если контекстное меню было вызвано при выборе одной строки DataGrid
         if (OrdersGrid.SelectedItem != null)
         {
             if (OrdersGrid.SelectedItems.Count == 1)
             {
+                // Получение выбранного переводчика из DataGrid и запрос на подтверждение удаления
                 var translator = OrdersGrid.SelectedItem as Employee;
                 var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
                     {
+                        // удаление переводчика и обновление данных в DataGrid и бд
                         context.Employees.Remove(translator);
                         for (int i = 0; i < employees.Count; i++)
                         {

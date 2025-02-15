@@ -16,6 +16,9 @@ public partial class Customers : Page
         }
     }
     ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
+    /// <summary>
+    /// Загрузка таблицы заказчиков в формате ObservableCollection
+    /// </summary>
     private void LoadCustomers()
     {
         using (var context = new CCIContext())
@@ -28,24 +31,35 @@ public partial class Customers : Page
             }
         }
     }
+    /// <summary>
+    /// Обновление данных в DataGrid
+    /// </summary>
     public void UpdateDataGrid()
     {
         LoadCustomers();
         OrdersGrid.ItemsSource = customers;
         
     }
+    /// <summary>
+    /// Обработчик нажатия элемента контекстного меню для удаления заказчика
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
+        // Заказчика можно удалить, если контекстное меню было вызвано при выборе одной строки DataGrid
         if (OrdersGrid.SelectedItem != null)
         {
             if (OrdersGrid.SelectedItems.Count == 1)
             {
+                // Получение выбранного заказчика из DataGrid и запрос на подтверждение удаления
                 var customer = OrdersGrid.SelectedItem as Customer;
                 var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
                     {
+                        // удаление заказчика и обновление данных в DataGrid и бд
                         context.Customers.Remove(customer);
                         for (int i = 0; i < customers.Count; i++)
                         {
@@ -71,7 +85,11 @@ public partial class Customers : Page
             MessageBox.Show("Вы не выбрали элемент");
         }
     }
-
+    /// <summary>
+    /// Обработчик нажатия кнопки для создания нового заказчика
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void CreateCustomer_OnClick(object sender, RoutedEventArgs e)
     {
         var window = new CreateCustomer();

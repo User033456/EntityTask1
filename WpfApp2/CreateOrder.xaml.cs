@@ -15,6 +15,7 @@ public partial class CreateOrder : Page
     
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
+        // Список всех текстбоксов
         TextBoxes = new List<TextBox>()
         {
             FiotTextBox, EmailTextBox, AdressTextBox,PerevodTipeTextBox, PriseTextBox, WordCounterTextBox, OriginalLanguageTextBox,ForeignLanguageTextBox,
@@ -30,7 +31,7 @@ public partial class CreateOrder : Page
                 break;
             }
         }
-
+        // Если в TextBox есть хоть какие - то данные и email соответствует формату, можно начинать создание заявки
         if (flag && Formats.EmailFormat(EmailTextBox.Text.ToString()))
         {
             using (var context = new CCIContext())
@@ -49,10 +50,11 @@ public partial class CreateOrder : Page
                 {
                     context.Customers.Add(customer);
                     context.SaveChanges();
+                    // Поиск созданного заказчика для присвоения его Id заявке
                     var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
                     order.CustomerId = customer.Id;
                 }
-                // Если заказчик существует, программа найдёт его Id
+                // Если заказчик существует, программа найдёт его Id и присвоит заявке
                 else
                 {
                     var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
@@ -61,7 +63,7 @@ public partial class CreateOrder : Page
                         order.CustomerId = existingCustomer.Id;
                     }
                 }
-                // Если формат всех дат правильный и текстовых полей правильный, можно перейти к оформлению заявки
+                // Если формат всех дат и текстовых полей правильный, можно перейти к оформлению заявки
                 if (Formats.DateFormat(DateOfCreateOrder.Text.ToString()) && Formats.DateFormat(PlaneDateOfEndTextBox.Text.ToString()) && Formats.OnlyNumbers(PriseTextBox.Text.ToString()) && Formats.OnlyNumbers(WordCounterTextBox.Text))
                 {
                     order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());

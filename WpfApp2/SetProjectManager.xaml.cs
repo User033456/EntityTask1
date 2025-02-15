@@ -9,7 +9,7 @@ public partial class SetProjectManager : Window
     {
         InitializeComponent();
     }
-
+    
     private int Id;
     public SetProjectManager(int OrderId)
     {
@@ -19,11 +19,14 @@ public partial class SetProjectManager : Window
 
     private async void Button_OnClick(object sender, RoutedEventArgs e)
     {
+        // Проверка на наличие хоть каких - то данных в TextBox
         if (TextBox.Text != null && TextBox.Text != "")
         {
             using (var context = new CCIContext())
             {
+                // Проверка сущещствования введённого менеджера
                 bool Flag = context.ProjectManagers.Any(c => c.Name == TextBox.Text);
+                // Если менеджер существует, его можно привязать к заявке
                 if (Flag)
                 {
                     var Employee = context.ProjectManagers.FirstOrDefault(c => c.Name == TextBox.Text);
