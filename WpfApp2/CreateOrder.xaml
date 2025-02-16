@@ -8,7 +8,7 @@
       Title="CreateOrder" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Page.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#3b3939"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="1"/>

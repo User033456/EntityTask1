@@ -78,31 +78,31 @@
                   ItemsSource="{Binding orders}"
                   Sorting="OrdersGrid_OnSorting"
                   >
-            <DataGrid.ContextMenu>
+            <DataGrid.ContextMenu >
                 <ContextMenu Background="#403e3e" BorderBrush="White">
-                    <MenuItem Header="Удалить заявку" Click="MenuItem_OnClick" Foreground="White">
+                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Удалить заявку" Click="MenuItem_OnClick" Foreground="White">
                         <MenuItem.Icon>
-                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                            <Image Source="/Pictures/w128h1281338911651trashcan.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Изменить статус" Click="ChangeStatusMenuItem_OnClick" Foreground="White">
+                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Изменить статус" Click="ChangeStatusMenuItem_OnClick" Foreground="White">
                         <MenuItem.Icon>
-                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                            <Image Source="/Pictures/497-4979781_thumb-image-red-circle-arrow-png-transparent-png.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Назначить Менеджера проекта" Click="ChangeProjectManagerMenuItem_OnClick" Foreground="White">
+                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Назначить Менеджера проекта" Click="ChangeProjectManagerMenuItem_OnClick" Foreground="White">
                         <MenuItem.Icon>
-                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                            <Image Source="/Pictures/spel6k.png" Width="16" Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Указать нотариуса" Click="ChangeNotariesMenuItem_OnClick" Foreground="White">
+                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Указать нотариуса" Click="ChangeNotariesMenuItem_OnClick" Foreground="White">
                         <MenuItem.Icon>
-                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                            <Image Source="/Pictures/docs.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Указать дату завершения" Click="SetRealEndDateMenuItem_OnClick" Foreground="White">
+                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Указать дату завершения" Click="SetRealEndDateMenuItem_OnClick" Foreground="White">
                         <MenuItem.Icon>
-                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                            <Image Source="/Pictures/42926-9e9e9e.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>

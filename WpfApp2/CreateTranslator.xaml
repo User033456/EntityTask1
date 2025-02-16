@@ -8,7 +8,7 @@
         Title="CreateTranslator"  Background="#403e3e" Height="250" Width="250">
     <Window.Resources>
          <Style TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#3b3939"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -20,7 +20,7 @@
             </Style.Triggers>
         </Style>
         <Style  TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#3b3939"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -64,10 +64,10 @@
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0">Введите ФИО переводчика</TextBlock>
-            <TextBox Grid.Row="1" Name = "TextBox" Background="#403e3e"></TextBox>
+            <TextBox Grid.Row="1" Margin="3" Name = "TextBox" ></TextBox>
             <TextBlock Grid.Row="2">Введите примечания</TextBlock>
-            <TextBox Grid.Row="3" Name = "NotesTextBox" Background="#403e3e"></TextBox>
-            <Button Grid.Row="4" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
+            <TextBox Margin="3" Grid.Row="3" Name = "NotesTextBox" ></TextBox>
+            <Button Grid.Row="4" Margin="3" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
     </Grid>
 </Window>

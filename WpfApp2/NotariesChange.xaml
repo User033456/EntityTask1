@@ -13,7 +13,7 @@
                         <Setter Property="Padding" Value="4"/>
                 </Style>
                 <Style TargetType="Button">
-                        <Setter Property="Background" Value="#3C3C3C"/>
+                        <Setter Property="Background" Value="#3b3939"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="#5A5A5A"/>
                         <Setter Property="BorderThickness" Value="1"/>
@@ -34,7 +34,7 @@
                         </Setter>
                 </Style>
                 <Style TargetType="TextBox">
-                        <Setter Property="Background" Value="#3C3C3C"/>
+                        <Setter Property="Background" Value="#3b3939"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="BorderBrush" Value="#5A5A5A"/>
 
@@ -48,7 +48,7 @@
                         <RowDefinition Height="0.2*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0">Введите ФИО Нотариуса </TextBlock>
-                <TextBox Grid.Row="1" Name = "TextBox" Background="#403e3e"></TextBox>
-                <Button Grid.Row="2" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
+                <TextBox Grid.Row="1" Margin="3" Name = "TextBox"></TextBox>
+                <Button Grid.Row="2" Margin="3" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
 </Window>

@@ -18,4 +18,31 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Pictures\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Pictures\unnamed.png" />
+      <None Remove="Pictures\Statuspic.webp" />
+      <None Remove="Pictures\photo_2025-02-16_15-35-00.jpg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Pictures\w128h1281338911651trashcan.png" />
+      <Resource Include="Pictures\w128h1281338911651trashcan.png" />
+      <None Remove="Pictures\26392-view-refresh-clipart.png" />
+      <None Remove="Pictures\spel6k.png" />
+      <Resource Include="Pictures\spel6k.png" />
+      <None Remove="Pictures\42926-9e9e9e.png" />
+      <Resource Include="Pictures\42926-9e9e9e.png" />
+      <None Remove="Pictures\dfafsdf.png" />
+      <None Remove="Pictures\docs.png" />
+      <Resource Include="Pictures\docs.png" />
+      <None Remove="Pictures\497-4979781_thumb-image-red-circle-arrow-png-transparent-png.png" />
+      <Resource Include="Pictures\497-4979781_thumb-image-red-circle-arrow-png-transparent-png.png" />
+      <None Remove="Pictures\sadsadsadsda.png.png" />
+      <Resource Include="Pictures\sadsadsadsda.png.png" />
+    </ItemGroup>
+
 </Project>

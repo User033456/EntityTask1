@@ -8,7 +8,7 @@
         Title="CreateCustomer"  Background="#403e3e" Height="150" Width="200" >
     <Window.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#3b3939"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -68,11 +68,11 @@
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0">Введите ФИО  </TextBlock>
-            <TextBox Grid.Row="1" Name = "NameTextBox" Background="#403e3e"></TextBox>
-            <TextBlock Grid.Row="2">Введите Email  </TextBlock>
-            <TextBox Grid.Row="3" Name = "EmailTextBox" Background="#403e3e"></TextBox>
+            <TextBox Margin="3" Grid.Row="1" Name = "NameTextBox" ></TextBox>
+            <TextBlock Margin="0" Grid.Row="2">Введите Email  </TextBlock>
+            <TextBox Grid.Row="3" Margin="3" Name = "EmailTextBox" ></TextBox>
             <TextBlock Grid.Row="0" Grid.Column="1">Введите Адрес  </TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Name = "AdressTextBox" Background="#403e3e"></TextBox>
+            <TextBox Grid.Row="1" Margin="3" Grid.Column="1" Name = "AdressTextBox" ></TextBox>
             <Button Grid.Row="4" Grid.Column = "1" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
     </Grid>

@@ -81,9 +81,9 @@
                   >
             <DataGrid.ContextMenu>
                 <ContextMenu Background="#403e3e" BorderBrush="White">
-                    <MenuItem Header="Удалить менеджера" Click="MenuItem_OnClick" Foreground="White">
+                    <MenuItem  Background="#403e3e" BorderBrush="#403e3e" Header="Удалить менеджера" Click="MenuItem_OnClick" Foreground="White">
                         <MenuItem.Icon>
-                            <Image Source="/Images/delete_icon.png" Width="16" Height="16"/>
+                            <Image Source="/Pictures/w128h1281338911651trashcan.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
