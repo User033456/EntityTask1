@@ -86,6 +86,7 @@
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Viewbox>
         <Menu Grid.Row="0" Grid.Column="0"  VerticalAlignment="Top">
             <Button Name = "CreateOrder" Content="Создать заявку" HorizontalAlignment="Stretch" Click="CreateOrder_OnClick"></Button>
             <Button Name = "DeleteOrder" Content="Все заявки" HorizontalAlignment="Stretch" Click="DeleteOrder_OnClick"></Button>
@@ -95,6 +96,7 @@
             <Button Name = "Translations" Content="Переводы" HorizontalAlignment="Stretch" Click="Translations_OnClick"></Button>
             <Button Name = "Customers" Content="Заказчики" HorizontalAlignment="Stretch" Click="Customers_OnClick"></Button>
         </Menu>
+        </Viewbox>
         <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             
         </Frame>

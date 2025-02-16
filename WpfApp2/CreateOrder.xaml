@@ -18,6 +18,7 @@
                     <Setter Property="BorderBrush" Value="White"/>
                 </Trigger>
             </Style.Triggers>
+            
         </Style>
         <Style  TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -52,6 +53,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Padding" Value="4"/>
+            
         </Style>
         <Style TargetType="CheckBox"> 
             <Setter Property="Foreground" Value="White"/>
@@ -116,36 +118,35 @@
             <RowDefinition Height="0.25*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.25*"></RowDefinition>
-            
         </Grid.RowDefinitions>
-        <TextBlock Margin="3" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Создание заявки на перевод</TextBlock>
-        <TextBlock Margin="3" Grid.Row="1" Grid.Column="0" Text="Введите ФИО  или название компании" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Grid.Row="0" Grid.Column="0" Margin="3"> <TextBlock   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Создание заявки на перевод</TextBlock></Viewbox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="0"> <TextBlock  Text="Введите ФИО  или название компании" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "FiotTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите Email</TextBlock>
-        <TextBox Margin="3" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "EmailTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите Адрес</TextBlock>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="3"> <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >Введите Email</TextBlock></Viewbox>
+        <TextBox Margin="3" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "EmailTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="5"> <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите Адрес</TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "AdressTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите тип перевода</TextBlock>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="7"> <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите тип перевода</TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "PerevodTipeTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Column="0" Grid.Row="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите сумму оплаты</TextBlock>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="9"> <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите сумму оплаты</TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Column="0" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PriseTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Column="0" Grid.Row="11" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Юридическое лицо</TextBlock>
-        <CheckBox Margin="3" Grid.Column="0" Grid.Row="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox>
-        <TextBlock Margin="3" Grid.Row="1" Grid.Column="1" Text="Введите количество слов" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="11"> <TextBlock  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Юридическое лицо</TextBlock></Viewbox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="12"><CheckBox  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox></Viewbox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="1"> <TextBlock  Text="Введите количество слов" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "WordCounterTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Row="3" Grid.Column="1" Text="Введите язык оригинала" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="1"> <TextBlock  Text="Введите язык оригинала" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "OriginalLanguageTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Row="5" Grid.Column="1" Text="Введите язык, на который надо перевести" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Row="5" Grid.Column="1"> <TextBlock  Text="Введите язык, на который надо перевести" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "ForeignLanguageTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Row="7" Grid.Column="1" Text="Введите исходный формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Row="7" Grid.Column="1" ><TextBlock  Text="Введите исходный формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "InputFormatTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Row="9" Grid.Column="1" Text="Введите желаемый выходной формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Row="9" Grid.Column="1"> <TextBlock  Text="Введите желаемый выходной формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3"  Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="OutPutTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Row="1" Grid.Column="2" Text="Введите дату подачи заявки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="2"> <TextBlock  Text="Введите дату подачи заявки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="DateOfCreateOrder"></TextBox>
-        <TextBlock Margin="3" Grid.Row="3" Grid.Column="2" Text="Введите планируемую дату завершения работ" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="2">   <TextBlock  Text="Введите планируемую дату завершения работ" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox Margin="3" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PlaneDateOfEndTextBox"></TextBox>
-        <TextBlock Margin="3" Grid.Row="5" Grid.Column="2" Text="Введите примечания к переводу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
+        <Viewbox  Margin="3" Grid.Row="5" Grid.Column="2"> <TextBlock Text="Введите примечания к переводу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock> </Viewbox>
         <TextBox Margin="3" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="NotesTextBox"></TextBox>
         <Button Margin="3" Grid.Row="11" Grid.Column="2"  Click="ButtonBase_OnClick">Создать заявку </Button>
     </Grid>
