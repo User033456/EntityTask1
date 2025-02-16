@@ -66,11 +66,11 @@ public partial class Customers : Page
                             if (customers[i].Id == customer.Id)
                             {
                                 customers.RemoveAt(i);
-                                UpdateDataGrid();
                                 break;
                             }
                         }
                         context.SaveChanges();
+                        UpdateDataGrid();
                         MessageBox.Show("Успешное удаление заявки");
                     }
                 }

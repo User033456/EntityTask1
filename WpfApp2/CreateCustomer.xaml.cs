@@ -27,6 +27,7 @@ public partial class CreateCustomer : Window
                     customer.Name = NameTextBox.Text;
                     customer.Address = AdressTextBox.Text;
                     customer.Email = EmailTextBox.Text;
+                    customer.isLegalEntity = IsLegalTextBox.IsChecked.Value;
                     context.Customers.Add(customer);
                     context.SaveChanges();
                     MessageBox.Show("Заказчик создан успешно");
@@ -38,5 +39,10 @@ public partial class CreateCustomer : Window
                 }
             }
         }
+    }
+
+    private void IsLegalTextBox_OnChecked(object sender, RoutedEventArgs e)
+    {
+        
     }
 }

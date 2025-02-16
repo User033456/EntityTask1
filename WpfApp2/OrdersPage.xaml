@@ -59,10 +59,10 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Заявки"></TextBlock>
+        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock  Text="Заявки"></TextBlock></Viewbox>
         <DataGrid x:Name="OrdersGrid" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                   AutoGenerateColumns="False" 
                   IsReadOnly="True" 

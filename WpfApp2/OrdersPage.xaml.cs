@@ -90,11 +90,11 @@ public partial class OrdersPage : Page
                             if (orders[i].Id == order.Id)
                             {
                                 orders.RemoveAt(i);
-                                UpdateDataGrid();
                                 break;
                             }
                         }
                         context.SaveChanges();
+                        UpdateDataGrid();
                         MessageBox.Show("Успешное удаление заявки");
                     }
                 }

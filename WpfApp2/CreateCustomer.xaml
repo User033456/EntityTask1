@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="CreateCustomer"  Background="#403e3e" Height="150" Width="200" >
+        Title="CreateCustomer"  Background="#403e3e" Height="150" Width="250" >
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#3b3939"/>
@@ -53,6 +53,48 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Padding" Value="4"/>
         </Style>
+         <Style TargetType="CheckBox"> 
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal">
+                            <!-- Кастомная рамка для отметки, с округлыми углами -->
+                            <Border x:Name="CheckBorder"
+                                    Width="16" Height="16"
+                                    Background="Transparent"
+                                    BorderBrush="White"
+                                    BorderThickness="1"
+                                    CornerRadius="3"
+                                    VerticalAlignment="Center">
+                                <!-- Отметка, видимая только если IsChecked=True -->
+                                <Path x:Name="CheckMark"
+                                      Data="M2,8 L6,12 L14,4"
+                                      Stroke="White"
+                                      StrokeThickness="2"
+                                      StrokeEndLineCap="Round"
+                                      StrokeStartLineCap="Round"
+                                      Visibility="Collapsed" />
+                            </Border>
+                            <!-- Содержимое CheckBox -->
+                            <ContentPresenter VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <!-- При выбранном состоянии отображается отметка -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <!-- При наведении изменяется фон рамки для визуальной обратной связи -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="CheckBorder" Property="Background" Value="#33000000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -67,12 +109,14 @@
                 <RowDefinition Height="0.2*"></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0">Введите ФИО  </TextBlock>
+            <Viewbox  Grid.Row="0"> <TextBlock Grid.Row="0">Введите ФИО  </TextBlock></Viewbox>
             <TextBox Margin="3" Grid.Row="1" Name = "NameTextBox" ></TextBox>
-            <TextBlock Margin="0" Grid.Row="2">Введите Email  </TextBlock>
+            <Viewbox Grid.Row="2" > <TextBlock Margin="0" >Введите Email  </TextBlock></Viewbox>
             <TextBox Grid.Row="3" Margin="3" Name = "EmailTextBox" ></TextBox>
-            <TextBlock Grid.Row="0" Grid.Column="1">Введите Адрес  </TextBlock>
+            <Viewbox  Grid.Row="0" Grid.Column="1"><TextBlock>Введите Адрес  </TextBlock></Viewbox>
             <TextBox Grid.Row="1" Margin="3" Grid.Column="1" Name = "AdressTextBox" ></TextBox>
+            <Viewbox Grid.Column="1" Grid.Row="2"><TextBlock Margin="0" >Юридическое лицо</TextBlock> </Viewbox>
+            <Viewbox Margin="3" Grid.Column="1" Grid.Row="3"><CheckBox  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox></Viewbox>
             <Button Grid.Row="4" Grid.Column = "1" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
     </Grid>

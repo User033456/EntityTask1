@@ -61,7 +61,7 @@
                 <RowDefinition Height="0.4*"></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0">Введите ФИО Нотариуса </TextBlock>
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0"><TextBlock >Введите ФИО Нотариуса </TextBlock></Viewbox>
             <TextBox Margin="4" Grid.Row="1" Name = "TextBox" ></TextBox>
             <Button Grid.Row="2" Margin="4" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
