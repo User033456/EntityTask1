@@ -12,7 +12,7 @@ public partial class CreateNotary : Window
     private void Button_OnClick(object sender, RoutedEventArgs e)
     {
         // Проверка всех TextBox на пустоту
-        if (TextBox.Text != null && TextBox.Text != "")
+        if (Formats.isNullTextBox(TextBox))
         {
             using (var context = new CCIContext())
             {
@@ -25,14 +25,18 @@ public partial class CreateNotary : Window
                     notary.Name = TextBox.Text;
                     context.Notaries.Add(notary);
                     context.SaveChanges();
-                    MessageBox.Show("Нотариус добавлен успешно");
+                    CustomMessageBox.Show("Нотариус добавлен успешно");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Такой нотариус уже существует");
+                    CustomMessageBox.Show("Такой нотариус уже существует");
                 }
             }
+        }
+        else
+        {
+            CustomMessageBox.Show("Текстовое поле не было заполнено");
         }
     }
 }

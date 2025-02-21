@@ -5,12 +5,7 @@ namespace WpfApp2;
 
 public partial class CreateOrder : Page
 {
-    public CreateOrder()
-    {
-        InitializeComponent();
-        
-    }
-
+    public CreateOrder() =>InitializeComponent();
     public List<TextBox> TextBoxes = new List<TextBox>();
     
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -31,41 +26,46 @@ public partial class CreateOrder : Page
                 break;
             }
         }
-        // Если в TextBox есть хоть какие - то данные и email соответствует формату, можно начинать создание заявки
-        if (flag && Formats.EmailFormat(EmailTextBox.Text.ToString()))
+        // Если в TextBox есть хоть какие - то данные и email соответствует формату, можно начинать проверку формата данных
+        if (flag)
         {
-            using (var context = new CCIContext())
+            // Если формат всех дат и текстовых полей правильный, можно перейти к оформлению заявки
+            if (Formats.EmailFormat(EmailTextBox.Text.ToString()) && Formats.DateFormat(
+                                                                      DateOfCreateOrder.Text.ToString())
+                                                                  && Formats.DateFormat(PlaneDateOfEndTextBox.Text
+                                                                      .ToString())
+                                                                  && Formats.OnlyNumbers(PriseTextBox.Text.ToString())
+                                                                  && Formats.OnlyNumbers(WordCounterTextBox.Text))
             {
-                Order order = new Order();
-                Customer customer = new Customer();
-                Translation translation = new Translation();
-                // заполнение данных заказчика
-                customer.Name = FiotTextBox.Text;
-                customer.Address = AdressTextBox.Text;
-                customer.Email = EmailTextBox.Text;
-                customer.isLegalEntity = IsLegalTextBox.IsChecked.Value;
-                bool CustomerFlag = context.Customers.Any(c => c.Email == EmailTextBox.Text);
-                // Если заказчика не существует, он будет создан
-                if (CustomerFlag == false)
+                using (var context = new CCIContext())
                 {
-                    context.Customers.Add(customer);
-                    context.SaveChanges();
-                    // Поиск созданного заказчика для присвоения его Id заявке
-                    var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
-                    order.CustomerId = customer.Id;
-                }
-                // Если заказчик существует, программа найдёт его Id и присвоит заявке
-                else
-                {
-                    var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
-                    if (existingCustomer != null)
+                    Order order = new Order();
+                    Customer customer = new Customer();
+                    Translation translation = new Translation();
+                    // заполнение данных заказчика
+                    customer.Name = FiotTextBox.Text;
+                    customer.Address = AdressTextBox.Text;
+                    customer.Email = EmailTextBox.Text;
+                    customer.isLegalEntity = IsLegalTextBox.IsChecked.Value;
+                    bool CustomerFlag = context.Customers.Any(c => c.Email == EmailTextBox.Text);
+                    // Если заказчика не существует, он будет создан
+                    if (CustomerFlag == false)
                     {
-                        order.CustomerId = existingCustomer.Id;
+                        context.Customers.Add(customer);
+                        context.SaveChanges();
+                        // Поиск созданного заказчика для присвоения его Id заявке
+                        var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
+                        order.CustomerId = customer.Id;
                     }
-                }
-                // Если формат всех дат и текстовых полей правильный, можно перейти к оформлению заявки
-                if (Formats.DateFormat(DateOfCreateOrder.Text.ToString()) && Formats.DateFormat(PlaneDateOfEndTextBox.Text.ToString()) && Formats.OnlyNumbers(PriseTextBox.Text.ToString()) && Formats.OnlyNumbers(WordCounterTextBox.Text))
-                {
+                    // Если заказчик существует, программа найдёт его Id и присвоит заявке
+                    else
+                    {
+                        var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
+                        if (existingCustomer != null)
+                        {
+                            order.CustomerId = existingCustomer.Id;
+                        }
+                    }
                     order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());
                     order.PlannedEndDate = DateOnly.Parse(PlaneDateOfEndTextBox.Text.ToString());
                     order.Price = int.Parse(PriseTextBox.Text);
@@ -88,16 +88,18 @@ public partial class CreateOrder : Page
                     translation.OrderId =order.Id;
                     context.Translations.Add(translation);
                     context.SaveChanges();
-                    MessageBox.Show("Заявка успешно создана");
+                    CustomMessageBox.Show("Заявка успешно создана");
                 }
-                else
-                {
-                    MessageBox.Show("Ошибка в формате данных");
-                }
-                
+            }
+            else
+            {
+                CustomMessageBox.Show("Ошибка в формате данных");
             }
         }
-        
+        else
+        {
+            CustomMessageBox.Show("не все поля заполнены", "ошибка", MessageBoxButton.OK);
+        }
     }
     private void IsLegalTextBox_OnChecked(object sender, RoutedEventArgs e)
     {

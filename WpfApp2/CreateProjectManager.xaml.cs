@@ -11,8 +11,8 @@ public partial class CreateProjectManager : Window
 
     private void Button_OnClick(object sender, RoutedEventArgs e)
     {
-        // Проверка всех TextBox на пустоту
-        if (TextBox.Text != null && TextBox.Text != "")
+        // Проверка TextBox на пустоту
+        if (Formats.isNullTextBox(TextBox))
         {
             using (var context = new CCIContext())
             {
@@ -25,14 +25,18 @@ public partial class CreateProjectManager : Window
                     manager.Name = TextBox.Text;
                     context.ProjectManagers.Add(manager);
                     context.SaveChanges();
-                    MessageBox.Show("Менеджер проекта добавлен успешно");
+                    CustomMessageBox.Show("Менеджер проекта добавлен успешно");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Такой менеджер проекта уже существует");
+                    CustomMessageBox.Show("Такой менеджер проекта уже существует");
                 }
             }
+        }
+        else
+        {
+            CustomMessageBox.Show("Текстовое поле не было заполнено");
         }
     }
 }

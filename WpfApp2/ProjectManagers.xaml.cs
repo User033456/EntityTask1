@@ -55,7 +55,7 @@ public partial class ProjectManagers : Page
             {
                 // Получение выбранного менеджера из DataGrid и запрос на подтверждение удаления
                 var manager= OrdersGrid.SelectedItem as ProjectManager;
-                var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
+                var result = CustomMessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
@@ -73,18 +73,18 @@ public partial class ProjectManagers : Page
                         }
                         context.SaveChanges();
                         UpdateDataGrid();
-                        MessageBox.Show("Успешное удаление менеджера проекта");
+                        CustomMessageBox.Show("Успешное удаление менеджера проекта");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Выберите 1 элемент");
+                CustomMessageBox.Show("Выберите 1 элемент");
             }
         }
         else
         {
-            MessageBox.Show("Вы не выбрали элемент");
+            CustomMessageBox.Show("Вы не выбрали элемент");
         }
     }
 

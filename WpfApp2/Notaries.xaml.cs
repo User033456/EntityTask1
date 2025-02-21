@@ -54,7 +54,7 @@ public partial class Notaries : Page
             {
                 // Получение выбранного нотариуса из DataGrid и запрос на подтверждение удаления
                 var notary = OrdersGrid.SelectedItem as Notary;
-                var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
+                var result = CustomMessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
@@ -72,18 +72,18 @@ public partial class Notaries : Page
                         }
                         context.SaveChanges();
                         UpdateDataGrid();
-                        MessageBox.Show("Успешное удаление заявки");
+                        CustomMessageBox.Show("Успешное удаление заявки");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Выберите 1 элемент");
+                CustomMessageBox.Show("Выберите 1 элемент");
             }
         }
         else
         {
-            MessageBox.Show("Вы не выбрали элемент");
+            CustomMessageBox.Show("Вы не выбрали элемент");
         }
     }
 

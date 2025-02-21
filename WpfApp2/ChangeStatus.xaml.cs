@@ -60,13 +60,13 @@ public partial class ChangeStatus : Window
                 order.status = status;
                 context.Entry(order).State =EntityState.Modified;
                 context.SaveChanges();
-                MessageBox.Show("Статус заявки изменён удачно");
+                CustomMessageBox.Show("Статус заявки изменён удачно");
                 Close();
             }
         }
         else
         {
-            MessageBox.Show("Не был выбран статус");
+            CustomMessageBox.Show("Не был выбран статус");
         }
         Close();
     }

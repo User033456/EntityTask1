@@ -5,55 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d"
-      Title="Translators" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-     <Page.Resources>
-         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="4"/>
-            <Style.Triggers>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="White"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style  TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="4"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              RecognizesAccessKey="True"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#33000000"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="#55000000"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Padding" Value="4"/>
-        </Style>
-    </Page.Resources>
+      Title="Translators" Style="{StaticResource CThemePage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -64,7 +17,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock  Text="Переводчики"></TextBlock></Viewbox>
+        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Переводчики"></TextBlock></Viewbox>
         <DataGrid x:Name="OrdersGrid" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                   AutoGenerateColumns="False" 
                   IsReadOnly="True" 
@@ -107,6 +60,6 @@
                 <DataGridTextColumn Header="Информация" Binding="{Binding Note}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Margin="5" Grid.Column="1" Name = "AddTranslatorButton" Click="AddTranslatorButton_OnClick">Добавить переводчика</Button>
+        <Button Style="{StaticResource CThemeButton}" Grid.Row="2" Margin="5" Grid.Column="1" Name = "AddTranslatorButton" Click="AddTranslatorButton_OnClick">Добавить переводчика</Button>
     </Grid>
 </Page>

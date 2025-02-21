@@ -26,14 +26,18 @@ public partial class CreateTranslator : Window
                     translator.Note = NotesTextBox.Text.ToString();
                     context.Employees.Add(translator);
                     context.SaveChanges();
-                    MessageBox.Show("Переводчик добавлен успешно");
+                    CustomMessageBox.Show("Переводчик добавлен успешно");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Такой переводчик уже существует");
+                    CustomMessageBox.Show("Такой переводчик уже существует");
                 }
             }
+        }
+        else
+        {
+            CustomMessageBox.Show("Не все текстовые поля были заполнены");
         }
     }
 }

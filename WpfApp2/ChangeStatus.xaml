@@ -5,40 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="ChangeStatus" Height="120" Width="150">
-     <Window.Resources>
-         <!-- Стиль для кнопок -->
-         <Style TargetType="Button">
-            <Setter Property="Background" Value="#3C3C3C"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#5A5A5A"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="10,5"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Nunito"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                    BorderBrush="{TemplateBinding BorderBrush}" 
-                    BorderThickness="{TemplateBinding BorderThickness}" 
-                    CornerRadius="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-         <!-- Стиль для TextBox -->
-        <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#3C3C3C"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#5A5A5A"/>
-
-        </Style>
-
-    </Window.Resources>
-    <Grid Margin="0,0,0,2" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        Title="ChangeStatus"  Height="120" Width="150" Style="{StaticResource CThemeWindow}">
+    <Grid Margin="0,0,0,2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.45*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
@@ -50,10 +18,11 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Viewbox HorizontalAlignment="Left" Grid.Row="0"><RadioButton Margin="2" GroupName="group" Name="Create" Content="Создана" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton></Viewbox>
-            <Viewbox HorizontalAlignment="Left" Grid.Row="1"><RadioButton Grid.Row="1"  Margin="2" GroupName="group" Name ="InWork"  Content="В работе" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton></Viewbox>
-            <Viewbox HorizontalAlignment="Left" Grid.Row="2"><RadioButton Grid.Row="2"  Margin="2" GroupName="group" Content="Выполнена" Name="Done" IsChecked="True" HorizontalAlignment="Left" Checked="radio_button1_click"></RadioButton></Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Stretch"   Grid.Row="0"><RadioButton Margin="2" GroupName="group" Style="{StaticResource CThemeRadioButton}" Name="Create" Content="Создана" IsChecked="True" HorizontalAlignment="Stretch" Checked="radio_button1_click"></RadioButton></Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.Row="1"><RadioButton Grid.Row="1"  Margin="2" Style="{StaticResource CThemeRadioButton}" GroupName="group" Name ="InWork"  Content="В работе" IsChecked="True" HorizontalAlignment="Stretch" Checked="radio_button1_click"></RadioButton></Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.Row="2"><RadioButton Grid.Row="2"  Margin="2" Style="{StaticResource CThemeRadioButton}" GroupName="group" Content="Выполнена" Name="Done" IsChecked="True" HorizontalAlignment="Stretch" Checked="radio_button1_click"></RadioButton></Viewbox>
         </Grid>
-        <Button Content="СОХРАНИТЬ" Grid.Row="1" Click="save_click" VerticalAlignment="Stretch" HorizontalAlignment = "Stretch"/>
+        <Viewbox Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Left"><Button Content="СОХРАНИТЬ" Style="{StaticResource CThemeButton}"  Click="save_click" VerticalAlignment="Stretch" HorizontalAlignment = "Stretch"/></Viewbox>
+        
     </Grid>
 </Window>

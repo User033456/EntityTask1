@@ -36,14 +36,18 @@ public partial class NotariesChange : Window
                     var order = context.Orders.FirstOrDefault(c => c.Id == Id);
                     order.NotariesID= Employee.Id;
                     context.SaveChanges();
-                    MessageBox.Show("Нотариус проекта изменён удачно");
+                    CustomMessageBox.Show("Нотариус проекта изменён удачно");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка, такого нотариуса не существует","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+                    CustomMessageBox.Show("Ошибка, такого нотариуса не существует","Ошибка",MessageBoxButton.OK);
                 }
             }
+        }
+        else
+        {
+            CustomMessageBox.Show("Текстовое поле не было заполнено");
         }
     }
 }

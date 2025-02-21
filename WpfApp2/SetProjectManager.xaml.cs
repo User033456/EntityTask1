@@ -20,7 +20,7 @@ public partial class SetProjectManager : Window
     private async void Button_OnClick(object sender, RoutedEventArgs e)
     {
         // Проверка на наличие хоть каких - то данных в TextBox
-        if (TextBox.Text != null && TextBox.Text != "")
+        if (Formats.isNullTextBox(TextBox))
         {
             using (var context = new CCIContext())
             {
@@ -33,14 +33,18 @@ public partial class SetProjectManager : Window
                     var order = context.Orders.FirstOrDefault(c => c.Id == Id);
                     order.ProjectManagerId = Employee.Id;
                     context.SaveChanges();
-                    MessageBox.Show("Менеджер проекта изменён удачно");
+                    CustomMessageBox.Show("Менеджер проекта изменён удачно");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка, такого Менеджера не существует","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+                    CustomMessageBox.Show("Ошибка, такого Менеджера не существует","Ошибка",MessageBoxButton.OK);
                 }
             }
+        }
+        else
+        {
+            CustomMessageBox.Show("Текстовое поле не было заполнено");
         }
     }
 }

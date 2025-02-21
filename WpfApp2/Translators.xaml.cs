@@ -55,7 +55,7 @@ public partial class Translators : Page
             {
                 // Получение выбранного переводчика из DataGrid и запрос на подтверждение удаления
                 var translator = OrdersGrid.SelectedItem as Employee;
-                var result = MessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
+                var result = CustomMessageBox.Show("Подтвердите удаление","Подтверждение",MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     using (var context = new CCIContext())
@@ -72,18 +72,18 @@ public partial class Translators : Page
                         }
                         context.SaveChanges();
                         UpdateDataGrid();
-                        MessageBox.Show("Успешное удаление переводчика");
+                        CustomMessageBox.Show("Успешное удаление переводчика");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Выберите 1 элемент");
+                CustomMessageBox.Show("Выберите 1 элемент");
             }
         }
         else
         {
-            MessageBox.Show("Вы не выбрали элемент");
+            CustomMessageBox.Show("Вы не выбрали элемент");
         }
     }
 

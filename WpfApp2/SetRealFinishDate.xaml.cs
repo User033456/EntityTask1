@@ -17,7 +17,7 @@ public partial class SetRealFinishDate : Window
     private void Button_OnClick(object sender, RoutedEventArgs e)
     {
         // Проверка на наличие хоть каких - то данных в TextBox
-        if (TextBox.Text != null && TextBox.Text != "")
+        if (Formats.isNullTextBox(TextBox))
         {
             // проверка формата введённой даты
             if (Formats.DateFormat(TextBox.Text.ToString()))
@@ -29,14 +29,18 @@ public partial class SetRealFinishDate : Window
                     var order = context.Orders.FirstOrDefault(c => c.Id == Id);
                     order.RealEndDate = DateOnly.Parse(TextBox.Text.ToString());
                     context.SaveChanges();
-                    MessageBox.Show("Дата окончания работы установлена успешно");
+                    CustomMessageBox.Show("Дата окончания работы установлена успешно");
                     Close();
                 }
             }
             else
             {
-                MessageBox.Show("Неправильный формат даты");
+                CustomMessageBox.Show("Неправильный формат даты");
             }
+        }
+        else
+        {
+            CustomMessageBox.Show("Текстовое поле не было заполнено");
         }
     }
 }
