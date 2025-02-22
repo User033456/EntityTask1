@@ -5,15 +5,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="SetRealFinishDate" Style="{StaticResource CThemeWindow}" Height="150" Width="220">
+        Title="SetRealFinishDate" Style="{DynamicResource CThemeWindow}" Height="150" Width="220">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.15*"></RowDefinition>
                     <RowDefinition Height="0.4*"></RowDefinition>
                     <RowDefinition Height="0.2*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Viewbox Grid.Row="0"> <TextBlock Style="{StaticResource CThemeTextBlock}" Margin="2" >Введите дату окончания работы</TextBlock></Viewbox>
-                <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="1" Name = "TextBox"></TextBox>
-                <Button Style="{StaticResource CThemeButton}" Margin="3" Grid.Row="2" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
+                <Viewbox Grid.Row="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}" Margin="2" >Введите дату окончания работы</TextBlock></Viewbox>
+                <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="1" Name = "TextBox"></TextBox>
+                <Button Style="{DynamicResource CThemeButton}" Margin="3" Grid.Row="2" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
 </Window>

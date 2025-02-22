@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d"
-      Title="DeleteOrder"  Style="{StaticResource CThemePage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      Title="DeleteOrder"  Style="{DynamicResource CThemePage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -14,64 +14,42 @@
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Заявки"></TextBlock></Viewbox>
-        <DataGrid x:Name="OrdersGrid" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                  AutoGenerateColumns="False" 
-                  IsReadOnly="True" 
-                  Background="#403e3e"
-                  Foreground="White"
-                  BorderBrush="White"
-                  RowBackground="#403e3e"
-                  AlternatingRowBackground="#403e3e"
-                  GridLinesVisibility="All"
-                  HorizontalGridLinesBrush="White"
-                  VerticalGridLinesBrush="White"
-                  Margin="0,10"
+        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Заявки"></TextBlock></Viewbox>
+        <DataGrid x:Name="OrdersGrid" Grid.Column="0" Grid.Row="1"
+                  Style="{DynamicResource CDataGrid}"
+                  CellStyle="{DynamicResource CThemeDataGridCell}" ColumnHeaderStyle="{DynamicResource CThemeDataGridColumnHeader}"
                   ItemsSource="{Binding orders}"
                   Sorting="OrdersGrid_OnSorting"
                   >
             <DataGrid.ContextMenu >
-                <ContextMenu Background="#403e3e" BorderBrush="White">
-                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Удалить заявку" Click="MenuItem_OnClick" Foreground="White">
+                <ContextMenu Style="{DynamicResource CDataGridContextMenu}">
+                    <MenuItem Style="{DynamicResource CDataGridMenuItem}" Header="Удалить заявку" Click="MenuItem_OnClick">
                         <MenuItem.Icon>
                             <Image Source="/Pictures/w128h1281338911651trashcan.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Изменить статус" Click="ChangeStatusMenuItem_OnClick" Foreground="White">
+                    <MenuItem Style="{DynamicResource CDataGridMenuItem}"  Header="Изменить статус" Click="ChangeStatusMenuItem_OnClick">
                         <MenuItem.Icon>
                             <Image Source="/Pictures/497-4979781_thumb-image-red-circle-arrow-png-transparent-png.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Назначить Менеджера проекта" Click="ChangeProjectManagerMenuItem_OnClick" Foreground="White">
+                    <MenuItem Style="{DynamicResource CDataGridMenuItem}" Header="Назначить Менеджера проекта" Click="ChangeProjectManagerMenuItem_OnClick">
                         <MenuItem.Icon>
                             <Image Source="/Pictures/spel6k.png" Width="16" Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Указать нотариуса" Click="ChangeNotariesMenuItem_OnClick" Foreground="White">
+                    <MenuItem Style="{DynamicResource CDataGridMenuItem}" Header="Указать нотариуса" Click="ChangeNotariesMenuItem_OnClick" >
                         <MenuItem.Icon>
                             <Image Source="/Pictures/docs.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem BorderBrush="#403e3e" Background="#403e3e" Header="Указать дату завершения" Click="SetRealEndDateMenuItem_OnClick" Foreground="White">
+                    <MenuItem Style="{DynamicResource CDataGridMenuItem}" Header="Указать дату завершения" Click="SetRealEndDateMenuItem_OnClick">
                         <MenuItem.Icon>
                             <Image Source="/Pictures/42926-9e9e9e.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
-            <DataGrid.Resources>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#403e3e"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="BorderBrush" Value="White"/>
-                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-                <Style TargetType="DataGridCell">
-                    <Setter Property="BorderBrush" Value="White"/>
-                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
-                </Style>
-            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
                 <DataGridTextColumn Header="Дата заявки" Binding="{Binding RequestDate}" Width="*"/>

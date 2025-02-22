@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="CreateNotary" Style="{StaticResource CThemeWindow}" Height="150" Width="200">
+        Title="CreateNotary" Style="{DynamicResource CThemeWindow}" Height="150" Width="200">
     <Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -13,9 +13,9 @@
                 <RowDefinition Height="0.4*"></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Viewbox HorizontalAlignment="Left" Grid.Row="0"><TextBlock Style="{StaticResource CThemeTextBlock}" >Введите ФИО Нотариуса </TextBlock></Viewbox>
-            <TextBox Style="{StaticResource CThemeTextBox}" Margin="4" Grid.Row="1" Name = "TextBox" ></TextBox>
-            <Button Grid.Row="2" Margin="4" Name = "Button" Click="Button_OnClick" Style="{StaticResource CThemeButton}">Подтвердить</Button>
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0"><TextBlock Style="{DynamicResource CThemeTextBlock}" >Введите ФИО Нотариуса </TextBlock></Viewbox>
+            <TextBox Style="{DynamicResource CThemeTextBox}" Margin="4" Grid.Row="1" Name = "TextBox" ></TextBox>
+            <Button Grid.Row="2" Margin="4" Name = "Button" Click="Button_OnClick" Style="{DynamicResource CThemeButton}">Подтвердить</Button>
         </Grid>
     </Grid>
 </Window>

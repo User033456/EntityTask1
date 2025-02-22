@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="CreateCustomer"  Style="{StaticResource CThemeWindow}" Height="150" Width="250" >
+        Title="CreateCustomer"  Style="{DynamicResource CThemeWindow}" Height="150" Width="250" >
     
     <Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -20,15 +20,15 @@
                 <RowDefinition Height="0.2*"></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Viewbox  Grid.Row="0"> <TextBlock Style="{StaticResource CThemeTextBlock}" Grid.Row="0">Введите ФИО  </TextBlock></Viewbox>
-            <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="1" Name = "NameTextBox" ></TextBox>
-            <Viewbox Grid.Row="2" > <TextBlock Style="{StaticResource CThemeTextBlock}" Margin="0" >Введите Email  </TextBlock></Viewbox>
-            <TextBox Style="{StaticResource CThemeTextBox}" Grid.Row="3" Margin="3" Name = "EmailTextBox" ></TextBox>
-            <Viewbox  Grid.Row="0" Grid.Column="1"><TextBlock Style="{StaticResource CThemeTextBlock}">Введите Адрес  </TextBlock></Viewbox>
-            <TextBox Grid.Row="1" Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Column="1" Name = "AdressTextBox" ></TextBox>
-            <Viewbox Grid.Column="1" Grid.Row="2"><TextBlock Margin="0" Style="{StaticResource CThemeTextBlock}" >Юридическое лицо</TextBlock> </Viewbox>
-            <Viewbox Margin="3" Grid.Column="1" Grid.Row="3"><CheckBox Style="{StaticResource CDarkThemeCheckBox}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox></Viewbox>
-            <Button Grid.Row="4" Margin="2" Style="{StaticResource CThemeButton}" Grid.Column = "1" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
+            <Viewbox  Grid.Row="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}" Grid.Row="0">Введите ФИО  </TextBlock></Viewbox>
+            <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="1" Name = "NameTextBox" ></TextBox>
+            <Viewbox Grid.Row="2" > <TextBlock Style="{DynamicResource CThemeTextBlock}" Margin="0" >Введите Email  </TextBlock></Viewbox>
+            <TextBox Style="{DynamicResource CThemeTextBox}" Grid.Row="3" Margin="3" Name = "EmailTextBox" ></TextBox>
+            <Viewbox  Grid.Row="0" Grid.Column="1"><TextBlock Style="{DynamicResource CThemeTextBlock}">Введите Адрес  </TextBlock></Viewbox>
+            <TextBox Grid.Row="1" Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="1" Name = "AdressTextBox" ></TextBox>
+            <Viewbox Grid.Column="1" Grid.Row="2"><TextBlock Margin="0" Style="{DynamicResource CThemeTextBlock}" >Юридическое лицо</TextBlock> </Viewbox>
+            <Viewbox Margin="3" Grid.Column="1" Grid.Row="3"><CheckBox Style="{DynamicResource CDarkThemeCheckBox}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox></Viewbox>
+            <Button Grid.Row="4" Margin="2" Style="{DynamicResource CThemeButton}" Grid.Column = "1" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
     </Grid>
 </Window>

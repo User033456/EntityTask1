@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="CreateProjectManager" Style="{StaticResource CThemeWindow}" Height="150" Width="220">
+        Title="CreateProjectManager" Style="{DynamicResource CThemeWindow}" Height="150" Width="220">
     <Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -13,9 +13,9 @@
                 <RowDefinition Height="0.4*"></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Viewbox Grid.Row="0"><TextBlock Style="{StaticResource CThemeTextBlock}" Margin="2" >Введите ФИО Менеджера проекта </TextBlock></Viewbox>
-            <TextBox Margin="3" Grid.Row="1" Name = "TextBox" Style="{StaticResource CThemeTextBox}" ></TextBox>
-            <Button Margin="3" Grid.Row="2" Name = "Button" Click="Button_OnClick" Style="{StaticResource CThemeButton}">Подтвердить</Button>
+            <Viewbox Grid.Row="0"><TextBlock Style="{DynamicResource CThemeTextBlock}" Margin="2" >Введите ФИО Менеджера проекта </TextBlock></Viewbox>
+            <TextBox Margin="3" Grid.Row="1" Name = "TextBox" Style="{DynamicResource CThemeTextBox}" ></TextBox>
+            <Button Margin="3" Grid.Row="2" Name = "Button" Click="Button_OnClick" Style="{DynamicResource CThemeButton}">Подтвердить</Button>
         </Grid>
     </Grid>
 </Window>

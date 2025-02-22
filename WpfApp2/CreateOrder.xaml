@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:WpfApp2"
       mc:Ignorable="d"
-      Title="CreateOrder" Style="{StaticResource CThemePage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+      Title="CreateOrder" Style="{DynamicResource CThemePage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -27,35 +27,35 @@
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.25*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="0" Grid.Column="0" Margin="3"> <TextBlock  Style="{StaticResource CThemeTextBlock}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Создание заявки на перевод</TextBlock></Viewbox>
-        <Viewbox Margin="3" Grid.Row="1" Grid.Column="0"> <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите ФИО  или название компании" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "FiotTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Column="0" Grid.Row="3"> <TextBlock Style="{StaticResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >Введите Email</TextBlock></Viewbox>
-        <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "EmailTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Column="0" Grid.Row="5"> <TextBlock Style="{StaticResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите Адрес</TextBlock></Viewbox>
-        <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "AdressTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Column="0" Grid.Row="7"> <TextBlock Style="{StaticResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите тип перевода</TextBlock></Viewbox>
-        <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "PerevodTipeTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Column="0" Grid.Row="9"> <TextBlock Style="{StaticResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите сумму оплаты</TextBlock></Viewbox>
-        <TextBox Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PriseTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Column="0" Grid.Row="11"> <TextBlock Style="{StaticResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Юридическое лицо</TextBlock></Viewbox>
-        <Viewbox Margin="3" Grid.Column="0" Grid.Row="12"><CheckBox Style="{StaticResource CDarkThemeCheckBox}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox></Viewbox>
-        <Viewbox Margin="3" Grid.Row="1" Grid.Column="1"> <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите количество слов" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "WordCounterTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Row="3" Grid.Column="1"> <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите язык оригинала" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "OriginalLanguageTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Row="5" Grid.Column="1"> <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите язык, на который надо перевести" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "ForeignLanguageTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Row="7" Grid.Column="1" ><TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите исходный формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "InputFormatTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Row="9" Grid.Column="1"> <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите желаемый выходной формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3"  Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="OutPutTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Row="1" Grid.Column="2"> <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите дату подачи заявки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="DateOfCreateOrder"></TextBox>
-        <Viewbox Margin="3" Grid.Row="3" Grid.Column="2">   <TextBlock Style="{StaticResource CThemeTextBlock}"  Text="Введите планируемую дату завершения работ" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PlaneDateOfEndTextBox"></TextBox>
-        <Viewbox  Margin="3" Grid.Row="5" Grid.Column="2"> <TextBlock Style="{StaticResource CThemeTextBlock}" Text="Введите примечания к переводу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock> </Viewbox>
-        <TextBox  Style="{StaticResource CThemeTextBox}" Margin="3" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="NotesTextBox"></TextBox>
-        <Viewbox Grid.Row="11" Grid.Column="2"><Button Style="{StaticResource CThemeButton}" Margin="3"   Click="ButtonBase_OnClick">Создать заявку </Button></Viewbox>
+        <Viewbox Grid.Row="0" Grid.Column="0" Margin="3"> <TextBlock  Style="{DynamicResource CThemeTextBlock}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Создание заявки на перевод</TextBlock></Viewbox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите ФИО  или название компании" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "FiotTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="3"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >Введите Email</TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "EmailTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="5"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите Адрес</TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "AdressTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="7"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите тип перевода</TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "PerevodTipeTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="9"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите сумму оплаты</TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PriseTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="11"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Юридическое лицо</TextBlock></Viewbox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="12"><CheckBox Style="{DynamicResource CDarkThemeCheckBox}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="IsLegalTextBox" Checked="IsLegalTextBox_OnChecked" Unchecked="IsLegalTextBox_OnChecked"></CheckBox></Viewbox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="1"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите количество слов" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "WordCounterTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="1"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите язык оригинала" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "OriginalLanguageTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="5" Grid.Column="1"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите язык, на который надо перевести" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "ForeignLanguageTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="7" Grid.Column="1" ><TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите исходный формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "InputFormatTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="9" Grid.Column="1"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите желаемый выходной формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3"  Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="OutPutTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="2"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите дату подачи заявки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="DateOfCreateOrder"></TextBox>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="2">   <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите планируемую дату завершения работ" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PlaneDateOfEndTextBox"></TextBox>
+        <Viewbox  Margin="3" Grid.Row="5" Grid.Column="2"> <TextBlock Style="{DynamicResource CThemeTextBlock}" Text="Введите примечания к переводу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock> </Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="NotesTextBox"></TextBox>
+        <Viewbox Grid.Row="11" Grid.Column="2"><Button Style="{DynamicResource CThemeButton}" Margin="3"   Click="ButtonBase_OnClick">Создать заявку </Button></Viewbox>
     </Grid>
 </Page>

@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#403e3e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource CThemeWindow}">
-     <Window.Resources>
-     </Window.Resources>
+        Title="MainWindow"  Height="450" Width="800" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource CThemeWindow}">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*"></ColumnDefinition>
@@ -17,18 +15,46 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Viewbox>
-        <Menu Grid.Row="0" Grid.Column="0"  VerticalAlignment="Top" Style="{StaticResource CThemeMenu}">
-            <Button Style="{StaticResource CThemeButton}" Name = "CreateOrder" Content="Создать заявку" HorizontalAlignment="Stretch" Click="CreateOrder_OnClick"></Button>
-            <Button Style="{StaticResource CThemeButton}" Name = "DeleteOrder" Content="Все заявки" HorizontalAlignment="Stretch" Click="DeleteOrder_OnClick"></Button>
-            <Button Style="{StaticResource CThemeButton}" Name = "AllOrders" Content="Переводчики" HorizontalAlignment="Stretch" Click="Translators_OnClick"></Button>
-            <Button Style="{StaticResource CThemeButton}" Name = "Notaries" Content="Нотариусы" HorizontalAlignment="Stretch" Click="Notaries_OnClick"></Button>
-            <Button Style="{StaticResource CThemeButton}" Name = "ProjectManagers" Content="Менеджеры проектов" HorizontalAlignment="Stretch" Click="ProjectManagers_OnClick"></Button>
-            <Button Style="{StaticResource CThemeButton}" Name = "Translations" Content="Переводы" HorizontalAlignment="Stretch" Click="Translations_OnClick"></Button>
-            <Button Style="{StaticResource CThemeButton}" Name = "Customers" Content="Заказчики" HorizontalAlignment="Stretch" Click="Customers_OnClick"></Button>
+                <Menu Style="{DynamicResource CThemeMenu}">
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "CreateOrder" 
+                                Content="Создать заявку"  Click="CreateOrder_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "DeleteOrder" 
+                                Content="Созданные заявки"  Click="DeleteOrder_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "AllOrders" 
+                                Content="Переводчики" Click="Translators_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "Notaries" 
+                                Content="Нотариусы"  Click="Notaries_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "ProjectManagers" 
+                                Content="Менеджеры"  Click="ProjectManagers_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="5">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "Translations" 
+                                Content="Переводы"  Click="Translations_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="6">
+                        <Button Style="{DynamicResource CThemeButton}" Name = "Customers" 
+                                Content="Заказчики"   Click="Customers_OnClick"></Button>
+                </Viewbox>
+                <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="7">
+                        <Button Name="ThemeSwitchButton"
+                                Click="ThemeSwitchButton_Click"
+                                Style="{DynamicResource CThemeButton}"
+                                Content="Светлая тема"/>
+                </Viewbox>
         </Menu>
-        </Viewbox>
-        <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            
+        </Viewbox>    
+        
+        <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" 
+               Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         </Frame>
     </Grid>
 </Window>

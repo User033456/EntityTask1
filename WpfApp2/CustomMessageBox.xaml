@@ -6,7 +6,7 @@
         Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Style="{StaticResource CThemeWindow}">
+        Style="{DynamicResource CThemeWindow}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -15,7 +15,7 @@
 
         <TextBlock Name="MessageText"
                    Grid.Row="0"
-                   Style="{StaticResource CThemeTextBlock}"
+                   Style="{DynamicResource CThemeTextBlock}"
                    Margin="20"
                    TextWrapping="Wrap"
                    VerticalAlignment="Center"
@@ -26,13 +26,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Style="{StaticResource CThemeButton}" Grid.Column="0" Name="YesButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <Button Style="{DynamicResource CThemeButton}" Grid.Column="0" Name="YesButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                         Content="Да"
                         Click="YesButton_Click"/>
-                <Button Style="{StaticResource CThemeButton}" Grid.Column="1" Name="NoButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <Button Style="{DynamicResource CThemeButton}" Grid.Column="1" Name="NoButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                         Content="Нет"
                         Click="NoButton_Click"/>
-                <Button Style="{StaticResource CThemeButton}" Grid.Column="0" Name="OkButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <Button Style="{DynamicResource CThemeButton}" Grid.Column="0" Name="OkButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                         Grid.ColumnSpan="2"
                         Content="OK"
                         Click="OkButton_Click"/>

@@ -12,6 +12,7 @@ public class CCIContext : DbContext
     public DbSet <Translation> Translations { get; set; }
     public DbSet<Notary> Notaries { get; set; }
     public DbSet<ProjectManager> ProjectManagers { get; set; }
+    public DbSet<theme> themes { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Подключение к базе данных SQLite
@@ -21,7 +22,6 @@ public class CCIContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
         // Определение связей
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Customer) 

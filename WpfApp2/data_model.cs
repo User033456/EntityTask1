@@ -68,3 +68,9 @@ public class Notary
     public string Name { get; set; } // ФИО
     public List<Order> Orders { get; set; } 
 }
+
+public class theme
+{
+    public int id { get; set; } // ID
+    public bool mode {get; set;}
+}

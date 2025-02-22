@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="CreateTranslator"  Style="{StaticResource CThemeWindow}" Height="250" Width="250">
+        Title="CreateTranslator"  Style="{DynamicResource CThemeWindow}" Height="250" Width="250">
     <Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -15,11 +15,11 @@
                 <RowDefinition Height="0.5*"></RowDefinition>
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Viewbox Grid.Row="0"><TextBlock Style="{StaticResource CThemeTextBlock}" >Введите ФИО переводчика</TextBlock></Viewbox>
-            <TextBox Grid.Row="1" Margin="3" Name = "TextBox" Style="{StaticResource CThemeTextBox}" ></TextBox>
-            <Viewbox  Grid.Row="2"><TextBlock Style="{StaticResource CThemeTextBlock}">Введите примечания</TextBlock></Viewbox>
-            <TextBox Margin="3" Grid.Row="3" Name = "NotesTextBox" Style="{StaticResource CThemeTextBox}" ></TextBox>
-            <Button Grid.Row="4" Margin="3" Name = "Button" Click="Button_OnClick" Style="{StaticResource CThemeButton}">Подтвердить</Button>
+            <Viewbox Grid.Row="0"><TextBlock Style="{DynamicResource CThemeTextBlock}" >Введите ФИО переводчика</TextBlock></Viewbox>
+            <TextBox Grid.Row="1" Margin="3" Name = "TextBox" Style="{DynamicResource CThemeTextBox}" ></TextBox>
+            <Viewbox  Grid.Row="2"><TextBlock Style="{DynamicResource CThemeTextBlock}">Введите примечания</TextBlock></Viewbox>
+            <TextBox Margin="3" Grid.Row="3" Name = "NotesTextBox" Style="{DynamicResource CThemeTextBox}" ></TextBox>
+            <Button Grid.Row="4" Margin="3" Name = "Button" Click="Button_OnClick" Style="{DynamicResource CThemeButton}">Подтвердить</Button>
         </Grid>
     </Grid>
 </Window>
