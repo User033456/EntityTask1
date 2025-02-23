@@ -222,4 +222,85 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="СThemeComboBox" TargetType="ComboBox">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="PART_EditableTextBox"
+                                        Margin="2,0,0,0"
+                                        Padding="{TemplateBinding Padding}"
+                                        Style="{StaticResource CThemeTextBox}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Visibility="Collapsed"
+                                        IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                Margin="{TemplateBinding Padding}"
+                                                Content="{TemplateBinding SelectionBoxItem}"
+                                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                VerticalAlignment="Center"/>
+                                <ToggleButton x:Name="ToggleButton"
+                                            Grid.Column="1"
+                                            Width="20"
+                                            Margin="0,0,4,0"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
+                                            RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Grid>
+                        </Border>
+                        <Popup x:Name="Popup"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True"
+                               Placement="Bottom"
+                               PopupAnimation="Slide">
+                            <Border Background="{StaticResource BackgroundBrush}"
+                                    BorderBrush="#CCCCCC"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Margin="0,2,0,0">
+                                <ScrollViewer MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                            VerticalScrollBarVisibility="Auto">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEditable" Value="True">
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ContentPresenter" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#E8E8E8"/>
+                            <Setter Property="BorderBrush" Value="#AAAAAA"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="#666666"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
