@@ -10,12 +10,11 @@
         "projectUniqueName": "C:\\projects C#\\EntityTask1\\WpfApp2\\WpfApp2.csproj",
         "projectName": "WpfApp2",
         "projectPath": "C:\\projects C#\\EntityTask1\\WpfApp2\\WpfApp2.csproj",
-        "packagesPath": "C:\\Users\\purpl\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\zimin\\.nuget\\packages\\",
         "outputPath": "C:\\projects C#\\EntityTask1\\WpfApp2\\obj\\",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
-          "C:\\Users\\purpl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zimin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,20 +77,16 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.12, 8.0.12]"
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[8.0.8, 8.0.8]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.12, 8.0.12]"
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[8.0.8, 8.0.8]"
             },
             {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.12, 8.0.12]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.12, 8.0.12]"
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[8.0.8, 8.0.8]"
             }
           ],
           "frameworkReferences": {
@@ -102,7 +97,12 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

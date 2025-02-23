@@ -4,6 +4,8 @@ using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using System.IO;
+
 public class CCIContext : DbContext
 {
     public DbSet <Customer> Customers { get; set; }
@@ -16,8 +18,9 @@ public class CCIContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Подключение к базе данных SQLite
-        //optionsBuilder.UseSqlite("Data Source=C:\\projectsC#\\EntityTask1\\WpfApp2\\CCI.db");
-        optionsBuilder.UseNpgsql("Host=localhost;" + "Database=CCI;" + "Username=user;" + "Password=RomaClown;");
+        string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CCI.db");
+        optionsBuilder.UseSqlite($"Data Source={dbPath}");
+        //optionsBuilder.UseNpgsql("Host=localhost;" + "Database=CCI;" + "Username=user;" + "Password=RomaClown;");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
