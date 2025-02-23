@@ -303,4 +303,64 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="CThemeMenuItem" TargetType="MenuItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10,3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Icon"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Иконка -->
+                            <ContentPresenter x:Name="Icon"
+                                            Grid.Column="0"
+                                            ContentSource="Icon"
+                                            Margin="3"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"/>
+                            
+                            <!-- Текст -->
+                            <ContentPresenter Grid.Column="1"
+                                            ContentSource="Header"
+                                            Margin="{TemplateBinding Padding}"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            RecognizesAccessKey="True"/>
+                            
+                            <!-- Сочетание клавиш -->
+                            <TextBlock x:Name="InputGestureText"
+                                     Grid.Column="2"
+                                     Text="{TemplateBinding InputGestureText}"
+                                     Margin="5,2,2,2"
+                                     VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#33000000"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#55000000"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
