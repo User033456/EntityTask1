@@ -11,13 +11,8 @@ public partial class OrdersPage : Page
     public OrdersPage()
     {
         InitializeComponent();
-        
-        using (var context = new CCIContext())
-        {
-            
             LoadOrders();
             OrdersGrid.ItemsSource = orders;
-        }
     }
     /// <summary>
     /// Проверка на то, сколько элементов DataGrid выделено

@@ -12,8 +12,16 @@
                         <RowDefinition Height="0.4*"></RowDefinition>
                         <RowDefinition Height="0.2*"></RowDefinition>
                 </Grid.RowDefinitions>
+                <ComboBox Name="comboBox"
+                          Grid.Row="1" 
+                          Style="{DynamicResource CThemeComboBox}"
+                          Margin="3"
+                          IsEditable="True"
+                          StaysOpenOnEdit="True"
+                          IsTextSearchEnabled="False"
+                          TextBoxBase.TextChanged="AutoCompleteComboBox_TextChanged" />
                 <Viewbox Grid.Row="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}" >Введите ФИО Нотариуса </TextBlock> </Viewbox>
-                <TextBox Style="{DynamicResource CThemeTextBox}" Grid.Row="1" Margin="3" Name = "TextBox"></TextBox>
+                <!-- <TextBox Style="{DynamicResource CThemeTextBox}" Grid.Row="1" Margin="3" Name = "TextBox"></TextBox> -->
                 <Button Style="{DynamicResource CThemeButton}" Grid.Row="2" Margin="3" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
         </Grid>
 </Window>

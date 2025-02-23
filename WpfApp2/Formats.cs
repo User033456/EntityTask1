@@ -87,6 +87,22 @@ public static class Formats
         }
         return false;
     }
+    public static bool isNullComboBox(ComboBox cb)
+    {
+        if (cb.Text != null && cb.Text != "")
+        {
+            foreach (var i in cb.Text)
+            {
+                // Если есть какой - либо символ, кроме пробела, ТекстБокс не пустой
+                if (i != ' ')
+                {
+                    return true;
+                    break;
+                }
+            }
+        }
+        return false;
+    }
     /// <summary>
     /// Проверка на то, относится ли символ к Английскому алфавиту
     /// </summary>

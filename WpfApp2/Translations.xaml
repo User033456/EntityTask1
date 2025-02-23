@@ -21,7 +21,7 @@
                   ItemsSource="{Binding  translations}"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" />
+                <!-- <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" /> -->
                 <DataGridTextColumn Header="Тип перевода" Binding="{Binding Type}" Width="*"/>
                 <DataGridTextColumn Header="Количество слов" Binding="{Binding WordsCount}" Width="*"/>
                 <DataGridTextColumn Header="Оригинальный язык" Binding="{Binding OriginLanguage}" Width="*"/>
@@ -30,8 +30,17 @@
                 <DataGridTextColumn Header="Формат выходных данных" Binding="{Binding OutputFormat}" Width="*"/>
                 <DataGridTextColumn Header="Формат входных данных" Binding="{Binding InputFormat}" Width="*"/>
                 <DataGridTextColumn Header="Айди переводчика" Binding="{Binding EmployeeId}" Width="*"/>
-                <DataGridTextColumn Header="Айди заявки" Binding="{Binding OrderId}" Width="*"/>
+                <DataGridTextColumn Header="Заявка" Binding="{Binding OrderId}" Width="*"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu Style="{DynamicResource CDataGridContextMenu}">
+                    <MenuItem Style="{DynamicResource CDataGridMenuItem}"  Header="Указать переводчика" Click="MenuItem_OnClick" >
+                        <MenuItem.Icon>
+                            <Image Source="/Pictures/spel6k.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </Page>

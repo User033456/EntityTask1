@@ -1,17 +1,20 @@
-﻿<Window x:Class="WpfApp2.SetProjectManager"
+﻿<Window x:Class="WpfApp2.SetTranslator"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="SetTranslator" Style="{DynamicResource CThemeWindow}" Height="150" Width="220" >
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        Title="SetTranslator" Height="150" Width="220"
+        Style="{DynamicResource CThemeWindow}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}" Margin="2" >Введите ФИО переводчика</TextBlock></Viewbox>
+        <!-- <TextBox Style="{DynamicResource CThemeTextBox}" Grid.Row="1" Margin="3" Name = "TextBox"></TextBox> -->
         <ComboBox Name="comboBox"
                   Grid.Row="1" 
                   Style="{DynamicResource CThemeComboBox}"
@@ -20,8 +23,6 @@
                   StaysOpenOnEdit="True"
                   IsTextSearchEnabled="False"
                   TextBoxBase.TextChanged="AutoCompleteComboBox_TextChanged" />
-        <Viewbox Grid.Row="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}" Margin="2" >Введите ФИО Менеджера проекта </TextBlock></Viewbox>
-        <!-- <TextBox Style="{DynamicResource CThemeTextBox}" Grid.Row="1" Margin="3" Name = "TextBox"></TextBox> -->
         <Button Style="{DynamicResource CThemeButton}" Grid.Row="2" Margin="3" Name = "Button" Click="Button_OnClick">Подтвердить</Button>
     </Grid>
 </Window>
