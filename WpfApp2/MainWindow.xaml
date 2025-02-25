@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="0.08*"></RowDefinition>
         </Grid.RowDefinitions>
         <Viewbox>
                 <Menu Style="{DynamicResource CThemeMenu}">
@@ -45,10 +46,10 @@
                                 Header="Заказчики"   Click="Customers_OnClick"></MenuItem>
                 </Viewbox>
                 <Viewbox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="7">
-                        <Button Name="ThemeSwitchButton"
+                        <MenuItem Name="ThemeSwitchButton"
                                 Click="ThemeSwitchButton_Click"
-                                Style="{DynamicResource CThemeButton}"
-                                Content="Светлая тема"/>
+                                Style="{DynamicResource CThemeMenuItem}"
+                               Header="Светлая тема"/>
                 </Viewbox>
         </Menu>
         </Viewbox>    
@@ -56,5 +57,6 @@
         <Frame Grid.Row="1" Grid.Column="0" Name="Frame1" Source="CreateOrder.xaml" 
                Frame.NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         </Frame>
+            <Button Grid.Row="2" HorizontalAlignment="Right" Margin="3" Style="{DynamicResource CThemeButton}" Click="FeedbackButton_OnClick">Обратная связь</Button>
     </Grid>
 </Window>

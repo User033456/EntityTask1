@@ -59,9 +59,22 @@ public partial class SetProjectManager : Window
     private void AutoCompleteComboBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         string text = comboBox.Text;
-        var filtered = ProjectmanagersNames.Where(name => name.ToLower().Contains(text.ToLower())).ToList();
-        comboBox.ItemsSource = filtered;
-        comboBox.IsDropDownOpen = filtered.Any();
+        var russianCulture = new System.Globalization.CultureInfo("ru-RU");
+        var filtered = ProjectmanagersNames
+            .Where(name => name.ToLower().Contains(text.ToLower()))
+            .OrderBy(name => name, StringComparer.Create(russianCulture, false))
+            .ToList();
+        var temp = new List<string>();
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == filtered.Count)
+            {
+                break;
+            }
+            temp.Add(filtered[i]);
+        }
+        comboBox.ItemsSource = temp;
+        comboBox.IsDropDownOpen = temp.Any();
         // Если удалось найти текстовое поле внутри ComboBox
         if (comboBox.Template.FindName("PART_EditableTextBox", comboBox) is TextBox textBox)
         {

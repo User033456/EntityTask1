@@ -47,7 +47,7 @@ public partial class MainWindow : Window
                     isDarkTheme = false;
                     Application.Current.Resources.MergedDictionaries.Add(newTheme);
                 }
-                ThemeSwitchButton.Content = isDarkTheme ? "Светлая тема" : "Тёмная тема";
+                ThemeSwitchButton.Header = isDarkTheme ? "Светлая тема" : "Тёмная тема";
             }
         }
     }
@@ -136,6 +136,11 @@ public partial class MainWindow : Window
     }
     private void UpdateThemeButton()
     {
-        ThemeSwitchButton.Content = isDarkTheme ? "Светлая тема" : "Тёмная тема";
+        ThemeSwitchButton.Header = isDarkTheme ? "Светлая тема" : "Тёмная тема";
+    }
+    private void FeedbackButton_OnClick(object sender, RoutedEventArgs e)
+    {
+       var window = new FeedbackWindow();
+       window.ShowDialog();
     }
 }
