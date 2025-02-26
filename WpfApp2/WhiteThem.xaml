@@ -363,4 +363,214 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="CThemeCalendar" TargetType="Calendar">
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        
+        <Setter Property="CalendarDayButtonStyle">
+            <Setter.Value>
+                <Style TargetType="CalendarDayButton">
+                    <Setter Property="MinWidth" Value="40"/>
+                    <Setter Property="MinHeight" Value="40"/>
+                    <Setter Property="Margin" Value="1"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"></Setter>
+                    <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="CalendarDayButton">
+                                <Grid Background="{TemplateBinding Background}">
+                                    <Rectangle x:Name="TodayBackground" 
+                                             Fill="{StaticResource ControlBackgroundBrush}"/>
+                                    <Rectangle x:Name="SelectedBackground" 
+                                             Fill="{StaticResource ControlBackgroundBrush}"/>
+                                    <ContentPresenter x:Name="NormalText"
+                                                    TextElement.Foreground="{StaticResource ForegroundBrush}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="SelectedBackground" Property="Fill" Value="#55FFFFFF"/>
+                                    </Trigger>
+                                    <Trigger Property="IsToday" Value="True">
+                                        <Setter TargetName="TodayBackground" Property="Fill" Value="#33FFFFFF"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="SelectedBackground" Property="Fill" Value="#33000000"/>
+                                    </Trigger>
+                                    <Trigger Property="IsBlackedOut" Value="True">
+                                        <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="#66E0E0E0"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CalendarButtonStyle">
+            <Setter.Value>
+                <Style TargetType="CalendarButton">
+                    <Setter Property="MinWidth" Value="40"/>
+                    <Setter Property="MinHeight" Value="42"/>
+                    <Setter Property="Margin" Value="1"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="CalendarButton">
+                                <Grid>
+                                    <Rectangle x:Name="SelectedBackground" 
+                                             Fill="{StaticResource ControlBackgroundBrush}"
+                                             />
+                                    <ContentPresenter x:Name="NormalText"
+                                                    TextElement.Foreground="{StaticResource ForegroundBrush}"
+                                                    
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="SelectedBackground" Property="Fill" Value="#33000000"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CalendarItemStyle">
+            <Setter.Value>
+                <Style TargetType="CalendarItem">
+                    <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="CalendarItem">
+                                <Grid x:Name="PART_Root" Background="{TemplateBinding Background}">
+                                    <Grid.Resources>
+                                        <!-- Стиль для текста дней недели -->
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+                                            <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}"></Setter>
+                                            <Setter Property="FontSize" Value="12"/>
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="Margin" Value="0,2"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Header с кнопками навигации -->
+                                    <Grid x:Name="PART_HeaderGrid" Grid.Row="0" Background="{TemplateBinding Background}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Button x:Name="PART_PreviousButton"
+                                                Grid.Column="0"
+                                                Style="{StaticResource CThemeButton}"
+                                                Margin="2"
+                                                Background="{StaticResource ControlBackgroundBrush}"
+                                                Content="&lt;"/>
+                                        
+                                        <Button x:Name="PART_HeaderButton"
+                                                Grid.Column="1"
+                                                Style="{StaticResource CThemeButton}"
+                                                Margin="2"
+                                                HorizontalAlignment="Center"/>
+                                        
+                                        <Button x:Name="PART_NextButton"
+                                                Grid.Column="2"
+                                                Style="{StaticResource CThemeButton}"
+                                                Margin="2"
+                                                
+                                                Content="&gt;"/>
+                                    </Grid>
+
+                                    <!-- Дни недели -->
+                                    <Grid x:Name="PART_DayTitles" Grid.Row="1" Background="{StaticResource ControlBackgroundBrush}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="0" Text="Пн"/>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="1" Text="Вт"/>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="2" Text="Ср"/>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="3" Text="Чт"/>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="4" Text="Пт"/>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="5" Text="Сб"/>
+                                        <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="6" Text="Вс"/>
+                                    </Grid>
+
+                                    <!-- Сетка с днями -->
+                                    <Grid x:Name="PART_MonthView" Grid.Row="2" Background="{StaticResource ControlBackgroundBrush}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+     <Style x:Key="CThemeDatePickerTextBox" TargetType="DatePickerTextBox">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    </Style>
+    <Style x:Key="CThemeDatePicker" TargetType="DatePicker">
+        <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CalendarStyle" Value="{DynamicResource CThemeCalendar}"/>
+        <Style.Resources>
+            <Style TargetType="DatePickerTextBox">
+                <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ForegroundBrush}"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            </Style>
+        </Style.Resources>
+    </Style>
 </ResourceDictionary>

@@ -14,7 +14,7 @@ public partial class CreateOrder : Page
         TextBoxes = new List<TextBox>()
         {
             FiotTextBox, EmailTextBox, AdressTextBox,PerevodTipeTextBox, PriseTextBox, WordCounterTextBox, OriginalLanguageTextBox,ForeignLanguageTextBox,
-            InputFormatTextBox,OutPutTextBox,DateOfCreateOrder, PlaneDateOfEndTextBox,NotesTextBox
+            InputFormatTextBox,OutPutTextBox, NotesTextBox
         };
         bool flag = true;
         // Проверка всех TextBox на наличие хоть каких - то данных
@@ -27,7 +27,7 @@ public partial class CreateOrder : Page
             }
         }
         // Если в TextBox есть хоть какие - то данные и email соответствует формату, можно начинать проверку формата данных
-        if (flag)
+        if (flag && Formats.isNullDatePicker(DateOfCreateOrder) && Formats.isNullDatePicker(PlaneDateOfEndTextBox))
         {
             // Если формат всех дат и текстовых полей правильный, можно перейти к оформлению заявки
             if (Formats.EmailFormat(EmailTextBox.Text.ToString()) && Formats.DateFormat(

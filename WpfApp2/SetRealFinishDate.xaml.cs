@@ -17,7 +17,7 @@ public partial class SetRealFinishDate : Window
     private void Button_OnClick(object sender, RoutedEventArgs e)
     {
         // Проверка на наличие хоть каких - то данных в TextBox
-        if (Formats.isNullTextBox(TextBox))
+        if (Formats.isNullDatePicker(TextBox))
         {
             // проверка формата введённой даты
             if (Formats.DateFormat(TextBox.Text.ToString()))

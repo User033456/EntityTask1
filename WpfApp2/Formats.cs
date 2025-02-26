@@ -37,8 +37,8 @@ public static class Formats
         }
         else
         {
-            if (ISNumber(line[0]) && ISNumber(line[1]) && line[2] == '-' && ISNumber(line[3]) && ISNumber(line[4]) &&
-                line[5] == '-' &&
+            if (ISNumber(line[0]) && ISNumber(line[1]) && line[2] == '.' && ISNumber(line[3]) && ISNumber(line[4]) &&
+                line[5] == '.' &&
                 ISNumber(line[6]) && ISNumber(line[7]) && ISNumber(line[8]) && ISNumber(line[9]))
             {
                 result = true;
@@ -142,11 +142,27 @@ public static class Formats
         foreach (var i in line)
         {
             // Если хоть один символ, кроме вышеописанных, не является английской буквой, строка не может быть емейлом
-            if (Formats.IsEnglish(i) == false && i != '.' && i != '@')
+            if ((Formats.IsEnglish(i) == false && Formats.ISNumber(i) == false) && i != '.' && i != '@')
             {
                 return false;
             }
         }
         return true;
+    }
+    public static bool isNullDatePicker(DatePicker cb)
+    {
+        if (cb.Text != null && cb.Text != "")
+        {
+            foreach (var i in cb.Text)
+            {
+                // Если есть какой - либо символ, кроме пробела, дэйтпиккер не пустой
+                if (i != ' ')
+                {
+                    return true;
+                    break;
+                }
+            }
+        }
+        return false;
     }
 }
