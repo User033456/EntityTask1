@@ -13,9 +13,11 @@
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="MessageText"
+        <TextBox Name="MessageText"
                    Grid.Row="0"
-                   Style="{DynamicResource CThemeTextBlock}"
+                   Style="{DynamicResource CThemeTextBox}"
+                   IsReadOnly="True"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                    Margin="20"
                    TextWrapping="Wrap"
                    VerticalAlignment="Center"
@@ -32,7 +34,7 @@
                 <Button Style="{DynamicResource CThemeButton}" Grid.Column="1" Name="NoButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                         Content="Нет"
                         Click="NoButton_Click"/>
-                <Button Style="{DynamicResource CThemeButton}" Grid.Column="0" Name="OkButton" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <Button Style="{DynamicResource CThemeButton}" HorizontalContentAlignment="Right" Margin="5" Grid.Column="0" Name="OkButton" VerticalAlignment="Stretch"
                         Grid.ColumnSpan="2"
                         Content="OK"
                         Click="OkButton_Click"/>

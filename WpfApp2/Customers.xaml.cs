@@ -23,7 +23,7 @@ public partial class Customers : Page
     {
         using (var context = new CCIContext())
         {
-            var customersList = context.Customers.ToList();
+            var customersList = context.Customers.OrderBy(c => c.Name).ToList();
             customers.Clear();
             foreach (var Customer in  customersList)
             {
@@ -93,6 +93,13 @@ public partial class Customers : Page
     private void CreateCustomer_OnClick(object sender, RoutedEventArgs e)
     {
         var window = new CreateCustomer();
+        window.ShowDialog();
+        UpdateDataGrid();
+    }
+
+    private void SearchCustomerButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var window = new CustomerSearchWindow();
         window.ShowDialog();
     }
 }

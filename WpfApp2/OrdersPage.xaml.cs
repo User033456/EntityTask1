@@ -158,7 +158,7 @@ public partial class OrdersPage : Page
         if (SelectedItemCheck())
         {
             var order = OrdersGrid.SelectedItem as Order;
-            var window = new SetRealFinishDate(order.Id);
+            var window = new SetRealFinishDate(order.Id, order.RequestDate);
             window.ShowDialog();
             UpdateDataGrid();
         }

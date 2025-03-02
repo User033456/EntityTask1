@@ -23,7 +23,7 @@ public partial class Notaries : Page
     {
         using (var context = new CCIContext())
         {
-            var NotariesList = context.Notaries.ToList();
+            var NotariesList = context.Notaries.OrderBy(n => n.Name).ToList();
             notaries.Clear();
             foreach (var notary in NotariesList)
             {
@@ -92,5 +92,10 @@ public partial class Notaries : Page
         CreateNotary window = new CreateNotary();
         window.ShowDialog();
         UpdateDataGrid();
+    }
+    private void SearchNotaryButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var Window = new NotarySearchWindow();
+        Window.ShowDialog();
     }
 }

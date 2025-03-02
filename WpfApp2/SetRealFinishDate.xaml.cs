@@ -8,10 +8,13 @@ public partial class SetRealFinishDate : Window
     {
         InitializeComponent();
     }
-    public SetRealFinishDate(int id)
+
+    private DateOnly d;
+    public SetRealFinishDate(int id, DateOnly date)
     {
         InitializeComponent();
         Id = id;
+        d = date;
     }
     private int Id;
     private void Button_OnClick(object sender, RoutedEventArgs e)
@@ -22,16 +25,24 @@ public partial class SetRealFinishDate : Window
             // проверка формата введённой даты
             if (Formats.DateFormat(TextBox.Text.ToString()))
             {
-                // В случае соответсвия формату её можно внести в заявку
-                using (var context = new CCIContext())
+                if (DateOnly.Parse(TextBox.Text.ToString()) < d)
                 {
-                    
-                    var order = context.Orders.FirstOrDefault(c => c.Id == Id);
-                    order.RealEndDate = DateOnly.Parse(TextBox.Text.ToString());
-                    context.SaveChanges();
-                    CustomMessageBox.Show("Дата окончания работы установлена успешно");
-                    Close();
+                    CustomMessageBox.Show("Дата окончания не может быть раньше даты начала");
                 }
+                else
+                {
+                    // В случае соответсвия формату её можно внести в заявку
+                    using (var context = new CCIContext())
+                    {
+                    
+                        var order = context.Orders.FirstOrDefault(c => c.Id == Id);
+                        order.RealEndDate = DateOnly.Parse(TextBox.Text.ToString());
+                        context.SaveChanges();
+                        CustomMessageBox.Show("Дата окончания работы установлена успешно");
+                        Close();
+                    }
+                }
+                
             }
             else
             {

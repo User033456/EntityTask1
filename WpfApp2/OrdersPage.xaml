@@ -14,7 +14,7 @@
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Заявки"></TextBlock></Viewbox>
+        <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock Style="{DynamicResource CThemeTextBlock}" Text="Заявки"></TextBlock></Viewbox>
         <DataGrid x:Name="OrdersGrid" Grid.Column="0" Grid.Row="1"
                   Style="{DynamicResource CDataGrid}"
                   CellStyle="{DynamicResource CThemeDataGridCell}" ColumnHeaderStyle="{DynamicResource CThemeDataGridColumnHeader}"
@@ -52,6 +52,7 @@
             </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <!-- <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*" /> -->
+                <DataGridTextColumn Header="Номер заявки" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn Header="Дата заявки" Binding="{Binding RequestDate}" Width="*"/>
                 <DataGridTextColumn Header="Планируемая дата завершения" Binding="{Binding PlannedEndDate}" Width="*"/>
                 <DataGridTextColumn Header="Дата завершения" Binding="{Binding RealEndDate}" Width="*" />

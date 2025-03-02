@@ -36,6 +36,13 @@
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-         <Button Style="{DynamicResource CThemeButton}" Grid.Row="2" Margin="5" Grid.Column="1" Name = "AddNotaryButton" Click="AddNotaryButton_OnClick">Добавить нотариуса</Button>
+        <Menu VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Style="{DynamicResource CThemeMenu}" Grid.Row="2"  Grid.Column="0"  >
+            <Viewbox>
+                <MenuItem Style="{DynamicResource CThemeMenuItem}" Name = "AddNotaryButton"  Click="AddNotaryButton_OnClick" Header="Добавить нотариуса"></MenuItem>
+            </Viewbox>
+            <Viewbox>
+                <MenuItem Style="{DynamicResource CThemeMenuItem}" Name = "SearchTranslatorButton" Click="SearchNotaryButton_OnClick" Header="Найти нотариуса" ></MenuItem>
+            </Viewbox>
+        </Menu>
     </Grid>
 </Page>

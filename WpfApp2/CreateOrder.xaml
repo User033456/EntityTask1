@@ -52,7 +52,7 @@
         <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "InputFormatTextBox"></TextBox>
         <Viewbox Margin="3" Grid.Row="9" Grid.Column="1"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите желаемый выходной формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
         <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3"  Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="OutPutTextBox"></TextBox>
-        <Viewbox Margin="3" Grid.Row="1" Grid.Column="2"> <TextBlock Style="{DynamicResource CThemeTextBlock}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите дату подачи заявки  в формате ДД-ММ-ГГГГ</TextBlock></Viewbox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="2"> <TextBlock Style="{DynamicResource CThemeTextBlock}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите дату подачи заявки  в формате ДД.ММ.ГГГГ</TextBlock></Viewbox>
         <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch
         " Grid.Row="2" Grid.Column="2">
             <DatePicker
@@ -61,7 +61,7 @@
                 Margin="3" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="DateOfCreateOrder"></DatePicker>
         </Viewbox>
         
-        <Viewbox Margin="3" Grid.Row="3" Grid.Column="2">   <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите планируемую дату завершения  в формате ДД-ММ-ГГГГ</TextBlock></Viewbox>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="2">   <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите планируемую дату завершения  в формате ДД.ММ.ГГГГ</TextBlock></Viewbox>
         <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch
         " Grid.Row="4" Grid.Column="2" >
             <DatePicker Style="{DynamicResource CThemeDatePicker}"    Margin="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PlaneDateOfEndTextBox"></DatePicker>

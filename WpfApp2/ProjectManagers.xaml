@@ -35,6 +35,14 @@
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Name}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Style="{DynamicResource CThemeButton}" Grid.Row="2" Margin="5" Grid.Column="1" Name = "AddProjectManagerButton" Click="AddProjectManagerButton_OnClick">Добавить менеджера проектов</Button>
+        <Menu VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Style="{DynamicResource CThemeMenu}" Grid.Row="2"  Grid.Column="0"  >
+            <Viewbox>
+                <MenuItem Style="{DynamicResource CThemeMenuItem}" Name = "AddProjectManagerButton"   Click="AddProjectManagerButton_OnClick" Header="Добавить менеджера проектов"></MenuItem>
+            </Viewbox>
+            <Viewbox>
+                <MenuItem Style="{DynamicResource CThemeMenuItem}" Name = "SearchTranslatorButton" Click="SearchProjectManagerButton_OnClick" Header="Найти менеджера проектов" ></MenuItem>
+            </Viewbox>
+        </Menu>
+       
     </Grid>
 </Page>

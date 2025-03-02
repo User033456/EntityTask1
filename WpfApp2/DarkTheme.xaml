@@ -151,6 +151,7 @@
         <Setter Property="BorderThickness" Value="0,0,1,1"/>
         <Setter Property="Padding" Value="5"/>
         </Style>
+    
     <Style TargetType="DataGridCell" x:Key="CThemeDataGridCell">
         <Setter Property="BorderBrush" Value="White"/>
         <Setter Property="BorderThickness" Value="0,0,1,1"/>
@@ -441,7 +442,7 @@
         <Setter Property="CalendarItemStyle">
             <Setter.Value>
                 <Style TargetType="CalendarItem">
-                    <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"></Setter>
+                    <Setter Property="Background" Value="{StaticResource ControlBackgroundBrush}"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="CalendarItem">
@@ -465,34 +466,36 @@
                                     </Grid.RowDefinitions>
 
                                     <!-- Header с кнопками навигации -->
-                                    <Grid x:Name="PART_HeaderGrid" Grid.Row="0" Background="{TemplateBinding Background}">
+                                    <Grid x:Name="PART_HeaderGrid" Grid.Row="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        
+                        
                                         <Button x:Name="PART_PreviousButton"
                                                 Grid.Column="0"
                                                 Style="{StaticResource CThemeButton}"
                                                 Margin="2"
-                                                Background="{StaticResource ControlBackgroundBrush}"
                                                 Content="&lt;"/>
-                                        
+                        
                                         <Button x:Name="PART_HeaderButton"
                                                 Grid.Column="1"
                                                 Style="{StaticResource CThemeButton}"
                                                 Margin="2"
+                                                IsEnabled="False"
+                                                IsHitTestVisible="False"
+                                                Background="{StaticResource ControlBackgroundBrush}"
+                                                Foreground="{StaticResource ForegroundBrush}"
+                                                FontWeight="Bold"
                                                 HorizontalAlignment="Center"/>
-                                        
+                        
                                         <Button x:Name="PART_NextButton"
                                                 Grid.Column="2"
                                                 Style="{StaticResource CThemeButton}"
                                                 Margin="2"
-                                                
                                                 Content="&gt;"/>
                                     </Grid>
-
                                     <!-- Дни недели -->
                                     <Grid x:Name="PART_DayTitles" Grid.Row="1" Background="{StaticResource ControlBackgroundBrush}">
                                         <Grid.ColumnDefinitions>
@@ -512,9 +515,8 @@
                                         <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="5" Text="Сб"/>
                                         <TextBlock Background="{StaticResource ControlBackgroundBrush}" Grid.Column="6" Text="Вс"/>
                                     </Grid>
-
-                                    <!-- Сетка с днями -->
-                                    <Grid x:Name="PART_MonthView" Grid.Row="2" Background="{StaticResource ControlBackgroundBrush}">
+                                    
+                                    <Grid x:Name="PART_MonthView" Grid.Row="2" Background="{StaticResource ControlBackgroundBrush}" Visibility="Visible">
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
                                             <RowDefinition/>
@@ -533,7 +535,35 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                     </Grid>
+                                    <Grid x:Name="PART_MonthsView" Grid.Row="2" Background="{StaticResource ControlBackgroundBrush}" Visibility="Hidden">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    <Grid x:Name="PART_YearView" Grid.Row="2" Background="{StaticResource ControlBackgroundBrush}" Visibility="Hidden">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    
                                 </Grid>
+                                
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>

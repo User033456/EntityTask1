@@ -25,7 +25,7 @@ public partial class ProjectManagers : Page
     {
         using (var context = new CCIContext())
         {
-            var projectManagersList = context.ProjectManagers.ToList();
+            var projectManagersList = context.ProjectManagers.OrderBy(pm => pm.Name).ToList();
             projectManagers.Clear();
             foreach (var Manager in projectManagersList)
             {
@@ -93,5 +93,11 @@ public partial class ProjectManagers : Page
         var window = new CreateProjectManager();
         window.ShowDialog();
         UpdateDataGrid();
+    }
+
+    private void SearchProjectManagerButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var window = new ProjectmanagerSearchWindow();
+        window.ShowDialog();
     }
 }

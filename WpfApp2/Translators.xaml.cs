@@ -24,7 +24,7 @@ public partial class Translators : Page
     {
         using (var context = new CCIContext())
         {
-            var employeesList = context.Employees.ToList();
+            var employeesList = context.Employees.OrderBy(e => e.Name).ToList();
            employees.Clear();
             foreach (var employee in employeesList)
             {
@@ -92,5 +92,10 @@ public partial class Translators : Page
         var window = new CreateTranslator();
         window.ShowDialog();
         UpdateDataGrid();
+    }
+    private void SearchTranslatorButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var window = new  TranslatorSearchWindow();
+        window.ShowDialog();
     }
 }
