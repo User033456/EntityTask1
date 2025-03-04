@@ -25,6 +25,7 @@ public partial class LoginWindow : Window
     {
         if (Formats.isNullTextBox(LoginTextBox) && Formats.isNullTextBox(PasswordTextBox))
         {
+            // Если совершается попытка входа от лица оператора, следует искать в соответствующей таблице
             if (LoginType == "Operator")
             {
                 using (var context = new CCIContext())
@@ -32,6 +33,7 @@ public partial class LoginWindow : Window
                     var flag = context.Operators.Any(c => c.Login == LoginTextBox.Text);
                     if (flag)
                     {
+                        // Если оператор с таким логином существует и пароль совпал, вход от лица оператора разрешён
                         var user = context.Operators.FirstOrDefault(c => c.Login == LoginTextBox.Text);
                         if (user.Password == PasswordTextBox.Text)
                         {
@@ -52,11 +54,13 @@ public partial class LoginWindow : Window
             }
             else
             {
+                // Если совершается попытка входа от лица клиента, следует искать в соответствующей таблице
                 using (var context = new CCIContext())
                 {
                     var flag = context.Users.Any(c => c.Login == LoginTextBox.Text);
                     if (flag)
                     {
+                        // Если клиент с таким логином существует и пароль совпал, вход от лица клиента разрешён
                         var user = context.Users.FirstOrDefault(c => c.Login == LoginTextBox.Text);
                         if (user.Password == PasswordTextBox.Text)
                         {
@@ -81,7 +85,11 @@ public partial class LoginWindow : Window
             CustomMessageBox.Show("Не все поля заполнены");
         }
     }
-
+    /// <summary>
+    /// Обработчик вызова окна регистрации нового клиента
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void SignInButton_OnClick(object sender, RoutedEventArgs e)
     {
         var window = new SignInWindow();

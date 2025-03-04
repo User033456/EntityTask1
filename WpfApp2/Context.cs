@@ -28,29 +28,35 @@ public class CCIContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         // Определение связей
+        // Один заказчик может иметь много заявок. Заявка же имеет одного закачика. Связь один ко многим
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Customer) 
             .WithMany(c => c.Orders) 
             .HasForeignKey(o => o.CustomerId);
+        // Менеджер следит за многими заявками. Заявка имеет одного менеджера. Связь один ко многим
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Projectmanager)
             .WithMany(e => e.Orders)
             .HasForeignKey(o => o.ProjectManagerId)
             .IsRequired(false);
+        // Нотариус заверяет много заявок. Заявку же заверяет один нотариус. Связь один ко многим
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Notaries)
             .WithMany(n => n.Orders)
             .HasForeignKey(k => k.NotariesID)
             .IsRequired(false);
+        // Переводчик может работать со многими заявками. Заявка же имеет только одного переводчика. Связь один ко многим
         modelBuilder.Entity<Translation>()
             .HasOne(e => e.Translator)
             .WithMany(e => e.Translations)
             .HasForeignKey(o => o.EmployeeId)
             .IsRequired(false);
+        // Заявка может быть сразу на несколько переводов. Перевод же относится к одной заявке. Связь один ко многим(В данном программе не исп)
         modelBuilder.Entity<Translation>()
             .HasOne(o => o.order)
             .WithMany(o => o.Translations)
             .HasForeignKey(o => o.OrderId);
+        // Заказчик имеет одну учётку, учётка имеет одного заказчика. Связь 1 к 1
         modelBuilder.Entity<Customer>().HasOne(o => o.user).WithOne(o => o.customer)
             .HasForeignKey<Customer>(o => o.UserId).IsRequired(false);
     }

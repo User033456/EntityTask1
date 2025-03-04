@@ -10,20 +10,21 @@ public partial class SignInWindow : Window
         InitializeComponent();
     }
     bool isOperatorFlag = false;
+    /// <summary>
+    /// Конструктор, вызываемый админом, для регистрации оператора
+    /// </summary>
+    /// <param name="isOperator"></param>
     public SignInWindow(bool isOperator)
     {
         InitializeComponent();
         this.isOperatorFlag = isOperator;
     }
     bool Flag = false;
-    /// <summary>
-    /// Конструктор, вызываемый оператором для создания аккаунта пользователю, если таковой его не имеет
-    /// </summary>
-    /// <param name="user"></param>
     private void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {
         using (var context = new CCIContext())
         {
+            // Проверка на отсутствие логина, он должен быть уникален
             var flag = context.Users.Any(c => c.Login == LoginTextBox.Text);
             var flag2 = context.Operators.Any(c => c.Login == LoginTextBox.Text);
             if (flag || flag2)
@@ -32,6 +33,7 @@ public partial class SignInWindow : Window
             }
             else
             {
+                // Добавлен админа от лица админа
                 if (isOperatorFlag)
                 {
                     var op = new Operator();
@@ -42,6 +44,7 @@ public partial class SignInWindow : Window
                     CustomMessageBox.Show("Оператор добавлен успешно");
                     Close();
                 }
+                // Добавление пользователя от лица пользователя или админа, или оператора
                 else
                 {
                     var user = new User();
@@ -51,7 +54,7 @@ public partial class SignInWindow : Window
                     context.SaveChanges();
                     UserInf.TempLogin = user.Login;
                     DialogResult = true;
-                    CustomMessageBox.Show("Поьзователь создан успешно");
+                    CustomMessageBox.Show("Пользователь создан успешно");
                     Close();
                 }
             }

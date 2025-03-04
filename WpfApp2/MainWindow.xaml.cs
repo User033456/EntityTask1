@@ -23,11 +23,13 @@ public partial class MainWindow : Window
 {
     public void LoadTheme()
     {
+        // Получение выбранной цветовой темы при прошлом использовании 
         using (var context = new CCIContext())
         {
             var existingTheme = context.themes.FirstOrDefault(c => c.id == 1);
             if (existingTheme != null)
             {
+                // Если значение истинное, темя тёмная
                 if (existingTheme.mode == true)
                 {
                     var newTheme = new ResourceDictionary
@@ -35,8 +37,10 @@ public partial class MainWindow : Window
                         Source = darkThemeUri,
                     };
                     isDarkTheme = true;
+                    // В качестве библиотеки ресурсов выбирается тёмная тема
                     Application.Current.Resources.MergedDictionaries.Add(newTheme);
                 }
+                // Если ложно, тема светлая
                 else
                 {
                     var newTheme = new ResourceDictionary
@@ -44,19 +48,21 @@ public partial class MainWindow : Window
                         Source = lightThemeUri,
                     };
                     isDarkTheme = false;
+                    // В качестве библиотеки ресурсов выбирается свтлая тема
                     Application.Current.Resources.MergedDictionaries.Add(newTheme);
                 }
                 ThemeSwitchButton.Header = isDarkTheme ? "Светлая тема" : "Тёмная тема";
             }
         }
     }
-
+    // Получение типа нужной страницы создания заявки
     private void CreateOrderType()
     {
         if (UserInf.Logintype == "User")
         {
             using (var context = new CCIContext())
             {
+                // Если пользовател когда - то вводил свои персональные данные, то есть, создавал заявку, ему доступно создания следующих заявок без повторного ввода данных
                 var user = context.Users.FirstOrDefault(u => u.Login == UserInf.Login);
                 if (context.Customers.Any(c => c.UserId == user.Id))
                 {
@@ -68,6 +74,7 @@ public partial class MainWindow : Window
                 }
             }
         }
+        // Для оператора страница всегда стандартная
         else
         {
             Frame1.Source = new Uri("CreateOrder.xaml", UriKind.Relative);
@@ -88,8 +95,10 @@ public partial class MainWindow : Window
         {
             AdminConsoleMenuItem.Visibility = Visibility.Visible;
         }
+        // Получение логина и пароля для настройки поведения окна
         UserInf.Login = Login;
         UserInf.Logintype = LoginType;
+        // Оператору доступно управление переводами, нотариусами, заказчиками, менеджерами, переводчиками
         if (LoginType == "Operator")
         {
             Translators.Visibility = Visibility.Visible;

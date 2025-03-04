@@ -59,6 +59,7 @@ public partial class CreateOrder : Page
                     // Если заказчика не существует, он будет создан
                     if (CustomerFlag == false)
                     {
+                        // Если зашёл пользователь, имеющий учётку, но не вводивший персональные данные
                         if (UserInf.Logintype == "User")
                         {
                             var user = context.Users.FirstOrDefault(c => c.Login == UserInf.Login);
@@ -79,6 +80,7 @@ public partial class CreateOrder : Page
                                 customer.UserId = UserFromDb.Id;
                             }
                         }
+                        // Если существует и заказчик и его аккаунт, можно продолжать составлять заявку
                         if (UserFlag == true)
                         {
                             context.Customers.Add(customer);
@@ -98,7 +100,6 @@ public partial class CreateOrder : Page
                                     customer.UserId = UserFromDb.Id;
                                 }
                             }
-                            // Если пользователь не существовал до этого, оператор должен создать ему аккаунт
                         }
                     }
                     // Если заказчик существует, программа найдёт его Id и присвоит заявке
@@ -111,8 +112,10 @@ public partial class CreateOrder : Page
                             UserFlag = true;
                         }
                     }
+                    // На этом этапе заказчик точно существует и можно работать над заявкой
                     if (UserFlag == true)
                     {
+                        // Заполнение данных заявки
                         order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());
                         order.PlannedEndDate = DateOnly.Parse(PlaneDateOfEndTextBox.Text.ToString());
                         order.Price = int.Parse(PriseTextBox.Text);
@@ -136,6 +139,7 @@ public partial class CreateOrder : Page
                         context.Translations.Add(translation);
                         context.SaveChanges();
                         CustomMessageBox.Show("Заявка успешно создана");
+                        // Если вход был от лица пользователя, персональные данные ему вводить больше не нужно. Следующие заявки будут создаваться в другом окне
                         if (UserInf.Logintype == "User")
                         {
                             var mainWindow = Window.GetWindow(this) as MainWindow;
