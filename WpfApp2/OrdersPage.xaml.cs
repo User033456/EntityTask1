@@ -57,7 +57,7 @@ public partial class OrdersPage : Page
             // Для оператора загружаются все заявки
             if (UserInf.Logintype == "Operator")
             {
-                var ordersList = context.Orders.ToList();
+                var ordersList = context.Orders.OrderBy(c =>c.Id).ToList();
                 orders.Clear();
                 orders = new ObservableCollection<Order>();
                 foreach (var order in ordersList)
@@ -70,7 +70,7 @@ public partial class OrdersPage : Page
             {
                 var user = context.Users.FirstOrDefault(u => u.Login == UserInf.Login);
                 var customer = context.Customers.FirstOrDefault(c => c.UserId == user.Id);
-                var ordersList = context.Orders.Where(o => o.CustomerId == customer.Id).ToList();
+                var ordersList = context.Orders.Where(o => o.CustomerId == customer.Id).OrderBy(c => c.Id).ToList();
                 orders.Clear();
                 orders = new ObservableCollection<Order>();
                 foreach (var order in ordersList)

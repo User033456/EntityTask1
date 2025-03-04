@@ -21,7 +21,7 @@ public partial class Translations : Page
     {
         using (var context = new CCIContext())
         {
-            var translationsList = context.Translations.ToList();
+            var translationsList = context.Translations. OrderBy(c => c.OrderId).ToList();
             translations.Clear();
             foreach (var translation in  translationsList)
             {
