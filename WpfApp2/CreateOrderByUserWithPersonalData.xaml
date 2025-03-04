@@ -1,0 +1,58 @@
+﻿<Page x:Class="WpfApp2.CreateOrderByUserWithPersonalData"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfApp2"
+      mc:Ignorable="d"
+      Title="CreateOrderByUserWithPersonalData" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{DynamicResource CThemePage}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+        </Grid.RowDefinitions>
+         <Viewbox Margin="3" Grid.Column="1" Grid.Row="5"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите тип перевода</TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "PerevodTipeTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Column="0" Grid.Row="7"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите сумму оплаты</TextBlock></Viewbox>
+        <TextBox Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PriseTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите количество слов" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "WordCounterTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите язык оригинала" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "OriginalLanguageTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="5" Grid.Column="0"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите язык, на который надо перевести" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "ForeignLanguageTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="1" ><TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите исходный формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name = "InputFormatTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="1"> <TextBlock Style="{DynamicResource CThemeTextBlock}"  Text="Введите желаемый выходной формат данных" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock></Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3"  Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Name="OutPutTextBox"></TextBox>
+        <Viewbox Margin="3" Grid.Row="1" Grid.Column="2"> <TextBlock Style="{DynamicResource CThemeTextBlock}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите дату подачи заявки  в формате ДД.ММ.ГГГГ</TextBlock></Viewbox>
+        <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch
+        " Grid.Row="2" Grid.Column="2">
+            <DatePicker
+                
+                Style="{DynamicResource CThemeDatePicker}"
+                Margin="3" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="DateOfCreateOrder"></DatePicker>
+        </Viewbox>
+        
+        <Viewbox Margin="3" Grid.Row="3" Grid.Column="2">   <TextBlock Style="{DynamicResource CThemeTextBlock}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Введите планируемую дату завершения  в формате ДД.ММ.ГГГГ</TextBlock></Viewbox>
+        <Viewbox VerticalAlignment="Stretch" HorizontalAlignment="Stretch
+        " Grid.Row="4" Grid.Column="2" >
+            <DatePicker Style="{DynamicResource CThemeDatePicker}"    Margin="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="PlaneDateOfEndTextBox"></DatePicker>
+        </Viewbox>
+        <Viewbox  Margin="3" Grid.Row="5" Grid.Column="2"> <TextBlock Style="{DynamicResource CThemeTextBlock}" Text="Введите примечания к переводу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock> </Viewbox>
+        <TextBox  Style="{DynamicResource CThemeTextBox}" Margin="3" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="NotesTextBox"></TextBox>
+        <Viewbox Grid.Row="8" Grid.Column="2"><Button Style="{DynamicResource CThemeButton}" Margin="3"   Click="ButtonBase_OnClick">Создать заявку </Button></Viewbox>
+    </Grid>
+</Page>

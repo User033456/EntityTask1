@@ -11,9 +11,17 @@ public partial class OrdersPage : Page
     public OrdersPage()
     {
         InitializeComponent();
-            LoadOrders();
-            OrdersGrid.ItemsSource = orders;
+        this.LoginType = UserInf.Logintype;
+        this.Login = UserInf.Login;
+        UpdateDataGrid();
+        // Пользователь не имеет доступа к контекстному меню, так как функции этого меню доступны только операторам
+        if (LoginType == "User")
+        {
+            OrdersGrid.ContextMenu.Visibility = Visibility.Collapsed;
+        }
     }
+    private string LoginType;
+    string Login;
     /// <summary>
     /// Проверка на то, сколько элементов DataGrid выделено
     /// </summary>
@@ -42,13 +50,33 @@ public partial class OrdersPage : Page
     /// </summary>
     private void LoadOrders()
     {
+        this.LoginType = UserInf.Logintype;
+        this.Login = UserInf.Login;
         using (var context = new CCIContext())
         {
-            var ordersList = context.Orders.ToList();
-            orders.Clear();
-            foreach (var order in ordersList)
+            // Для оператора загружаются все заявки
+            if (UserInf.Logintype == "Operator")
             {
-                orders.Add(order);
+                var ordersList = context.Orders.ToList();
+                orders.Clear();
+                orders = new ObservableCollection<Order>();
+                foreach (var order in ordersList)
+                {
+                    orders.Add(order);
+                }
+            }
+            // Пользователь може твидеть только свои заявки
+            else
+            {
+                var user = context.Users.FirstOrDefault(u => u.Login == UserInf.Login);
+                var customer = context.Customers.FirstOrDefault(c => c.UserId == user.Id);
+                var ordersList = context.Orders.Where(o => o.CustomerId == customer.Id).ToList();
+                orders.Clear();
+                orders = new ObservableCollection<Order>();
+                foreach (var order in ordersList)
+                {
+                    orders.Add(order);
+                }
             }
         }
     }
@@ -58,8 +86,10 @@ public partial class OrdersPage : Page
     public void UpdateDataGrid()
     {
         LoadOrders();
-        OrdersGrid.ItemsSource = orders;
-        
+        if (orders.Count != 0)
+        {
+            OrdersGrid.ItemsSource = orders;
+        }
     }
     /// <summary>
     /// Удаление заявки
@@ -170,45 +200,5 @@ public partial class OrdersPage : Page
     /// <param name="e"></param>
     private  async void OrdersGrid_OnSorting(object sender, DataGridSortingEventArgs e)
     {
-        string columnName = e.Column.SortMemberPath;
-         await using (var context = new CCIContext())
-        {
-            if (columnName != null)
-            {
-                if (columnName == "Id")
-                {
-                     context.Orders.OrderBy(o => o.Id);
-                }
-                else if (columnName == "RequestDate")
-                {
-                    context.Orders.OrderBy(o => o.RealEndDate);
-                }
-                else if (columnName == "PlannedEndDate")
-                {
-                    context.Orders.OrderBy(o => o.PlannedEndDate);
-                }
-                else if (columnName == "RealEndDate")
-                {
-                    context.Orders.OrderBy(o => o.RealEndDate);
-                }
-                else if (columnName == "status")
-                {
-                    context.Orders.OrderBy(o => o.status);
-                }
-                else if (columnName == "ProjectManagerId")
-                {
-                    context.Orders.OrderBy(o => o.ProjectManagerId);
-                }
-                else if (columnName == "CustomerId")
-                {
-                    context.Orders.OrderBy(o => o.CustomerId);
-                }
-                else if (columnName == "NotariesID")
-                {
-                    context.Orders.OrderBy(o => o.NotariesID);
-                }
-                await context.SaveChangesAsync();
-            }
-        }
     }
 }

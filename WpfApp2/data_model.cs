@@ -11,6 +11,8 @@ public class Customer
     public string? Email { get; set; } // Емеил 
     public bool? isLegalEntity { get; set; } // Юридическое лицо
     public string? Address { get; set; } // Адрес
+    public User? user { get; set; }
+    public int? UserId { get; set; }
     public List<Order>? Orders { get; set; }
 }
 public class Translation
@@ -69,4 +71,21 @@ public class theme
 {
     public int id { get; set; } // ID
     public bool mode {get; set;}
+}
+
+public class User
+{
+    public int Id { get; set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
+    public Customer? customer { get; set; }
+    public int? CutomerId { get; set; }
+}
+
+public class Operator
+{
+    public int Id { get; set; }
+    public string Login { get; set; }
+    public string Password { get; set; }
+    
 }

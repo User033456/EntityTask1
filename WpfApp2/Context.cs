@@ -15,6 +15,8 @@ public class CCIContext : DbContext
     public DbSet<Notary> Notaries { get; set; }
     public DbSet<ProjectManager> ProjectManagers { get; set; }
     public DbSet<theme> themes { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Operator> Operators { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Подключение к базе данных SQLite
@@ -49,5 +51,7 @@ public class CCIContext : DbContext
             .HasOne(o => o.order)
             .WithMany(o => o.Translations)
             .HasForeignKey(o => o.OrderId);
+        modelBuilder.Entity<Customer>().HasOne(o => o.user).WithOne(o => o.customer)
+            .HasForeignKey<Customer>(o => o.UserId).IsRequired(false);
     }
 }

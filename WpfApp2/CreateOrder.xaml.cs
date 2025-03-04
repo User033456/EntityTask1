@@ -46,16 +46,60 @@ public partial class CreateOrder : Page
                     customer.Name = FiotTextBox.Text;
                     customer.Address = AdressTextBox.Text;
                     customer.Email = EmailTextBox.Text;
-                    customer.isLegalEntity = IsLegalTextBox.IsChecked.Value;
+                    if (IsLegalTextBox.IsChecked == null)
+                    {
+                        customer.isLegalEntity = false;
+                    }
+                    else
+                    {
+                        customer.isLegalEntity = IsLegalTextBox.IsChecked.Value;
+                    }
                     bool CustomerFlag = context.Customers.Any(c => c.Email == EmailTextBox.Text);
+                    bool UserFlag = false;
                     // Если заказчика не существует, он будет создан
                     if (CustomerFlag == false)
                     {
-                        context.Customers.Add(customer);
-                        context.SaveChanges();
-                        // Поиск созданного заказчика для присвоения его Id заявке
-                        var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
-                        order.CustomerId = customer.Id;
+                        if (UserInf.Logintype == "User")
+                        {
+                            var user = context.Users.FirstOrDefault(c => c.Login == UserInf.Login);
+                            customer.UserId = user.Id;
+                            user.CutomerId = customer.Id;
+                            UserFlag = true;
+                        }
+                        else
+                        {
+                            // Если пользователь не существовал до этого, оператор должен создать ему аккаунт
+                            var window = new SignInWindow();
+                            window.ShowDialog();
+                            if (window.DialogResult == true)
+                            {
+                                UserFlag = true;
+                                var UserFromDb = context.Users.FirstOrDefault(c => c.Login == UserInf.TempLogin);
+                                UserFromDb.CutomerId = customer.Id;
+                                customer.UserId = UserFromDb.Id;
+                            }
+                        }
+                        if (UserFlag == true)
+                        {
+                            context.Customers.Add(customer);
+                            context.SaveChanges();
+                            // Поиск созданного заказчика для присвоения его Id заявке
+                            var existingCustomer = context.Customers.FirstOrDefault(c => c.Email == EmailTextBox.Text);
+                            order.CustomerId = customer.Id;
+                            if (UserInf.Logintype == "Operator")
+                            {
+                                var window = new SignInWindow();
+                                window.ShowDialog();
+                                if (window.DialogResult == true)
+                                {
+                                    UserFlag = true;
+                                    var UserFromDb = context.Users.FirstOrDefault(c => c.Login == UserInf.TempLogin);
+                                    UserFromDb.CutomerId = customer.Id;
+                                    customer.UserId = UserFromDb.Id;
+                                }
+                            }
+                            // Если пользователь не существовал до этого, оператор должен создать ему аккаунт
+                        }
                     }
                     // Если заказчик существует, программа найдёт его Id и присвоит заявке
                     else
@@ -64,31 +108,46 @@ public partial class CreateOrder : Page
                         if (existingCustomer != null)
                         {
                             order.CustomerId = existingCustomer.Id;
+                            UserFlag = true;
                         }
                     }
-                    order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());
-                    order.PlannedEndDate = DateOnly.Parse(PlaneDateOfEndTextBox.Text.ToString());
-                    order.Price = int.Parse(PriseTextBox.Text);
-                    order.RealEndDate = null;
-                    order.NotariesID = null;
-                    order.ProjectManagerId = null;
-                    order.Projectmanager = null;
-                    order.Notaries = null;
-                    order.status = 0;
-                    context.Orders.Add(order);
-                    context.SaveChanges();
-                    // Создание перевода
-                    translation.Type = PerevodTipeTextBox.Text;
-                    translation.WordsCount = int.Parse(WordCounterTextBox.Text);
-                    translation.OriginLanguage = OriginalLanguageTextBox.Text;
-                    translation.ForeignLanguage = ForeignLanguageTextBox.Text;
-                    translation.InputFormat = InputFormatTextBox.Text;
-                    translation.OutputFormat = OutPutTextBox.Text;
-                    translation.Notes = NotesTextBox.Text;
-                    translation.OrderId =order.Id;
-                    context.Translations.Add(translation);
-                    context.SaveChanges();
-                    CustomMessageBox.Show("Заявка успешно создана");
+                    if (UserFlag == true)
+                    {
+                        order.RequestDate = DateOnly.Parse(DateOfCreateOrder.Text.ToString());
+                        order.PlannedEndDate = DateOnly.Parse(PlaneDateOfEndTextBox.Text.ToString());
+                        order.Price = int.Parse(PriseTextBox.Text);
+                        order.RealEndDate = null;
+                        order.NotariesID = null;
+                        order.ProjectManagerId = null;
+                        order.Projectmanager = null;
+                        order.Notaries = null;
+                        order.status = 0;
+                        context.Orders.Add(order);
+                        context.SaveChanges();
+                        // Создание перевода
+                        translation.Type = PerevodTipeTextBox.Text;
+                        translation.WordsCount = int.Parse(WordCounterTextBox.Text);
+                        translation.OriginLanguage = OriginalLanguageTextBox.Text;
+                        translation.ForeignLanguage = ForeignLanguageTextBox.Text;
+                        translation.InputFormat = InputFormatTextBox.Text;
+                        translation.OutputFormat = OutPutTextBox.Text;
+                        translation.Notes = NotesTextBox.Text;
+                        translation.OrderId =order.Id;
+                        context.Translations.Add(translation);
+                        context.SaveChanges();
+                        CustomMessageBox.Show("Заявка успешно создана");
+                        if (UserInf.Logintype == "User")
+                        {
+                            var mainWindow = Window.GetWindow(this) as MainWindow;
+                            var window = new MainWindow(UserInf.Logintype, UserInf.Login);
+                            window.Show();
+                            mainWindow.Close();
+                        }
+                    }
+                    else
+                    {
+                        CustomMessageBox.Show("Аккаунт заказчика не был найден или создан");
+                    }
                 }
             }
             else

@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
         Title="CreateCustomer"  Style="{DynamicResource CThemeWindow}" Height="220" Width="350" >
-    
     <Grid>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>

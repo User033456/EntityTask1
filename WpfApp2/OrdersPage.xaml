@@ -15,7 +15,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"><TextBlock Style="{DynamicResource CThemeTextBlock}" Text="Заявки"></TextBlock></Viewbox>
-        <DataGrid x:Name="OrdersGrid" Grid.Column="0" Grid.Row="1"
+        <DataGrid Name="OrdersGrid" Grid.Column="0" Grid.Row="1"
                   Style="{DynamicResource CDataGrid}"
                   CellStyle="{DynamicResource CThemeDataGridCell}" ColumnHeaderStyle="{DynamicResource CThemeDataGridColumnHeader}"
                   ItemsSource="{Binding orders}"

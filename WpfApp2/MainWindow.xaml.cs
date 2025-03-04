@@ -21,9 +21,8 @@ namespace WpfApp2;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public void LoadTheme()
     {
-        InitializeComponent();
         using (var context = new CCIContext())
         {
             var existingTheme = context.themes.FirstOrDefault(c => c.id == 1);
@@ -51,6 +50,61 @@ public partial class MainWindow : Window
             }
         }
     }
+
+    private void CreateOrderType()
+    {
+        if (UserInf.Logintype == "User")
+        {
+            using (var context = new CCIContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.Login == UserInf.Login);
+                if (context.Customers.Any(c => c.UserId == user.Id))
+                {
+                    Frame1.Source = new Uri("CreateOrderByUserWithPersonalData.xaml", UriKind.Relative);
+                }
+                else
+                {
+                    Frame1.Source = new Uri("CreateOrder.xaml", UriKind.Relative);
+                }
+            }
+        }
+        else
+        {
+            Frame1.Source = new Uri("CreateOrder.xaml", UriKind.Relative);
+        }
+    }
+    public MainWindow()
+    {
+        InitializeComponent();
+        LoadTheme();
+        CreateOrderType();
+    }
+
+    public MainWindow(string LoginType, string Login)
+    {
+        InitializeComponent();
+        LoadTheme();
+        if (LoginType == "Operator" && Login == "Admin")
+        {
+            AdminConsoleMenuItem.Visibility = Visibility.Visible;
+        }
+        UserInf.Login = Login;
+        UserInf.Logintype = LoginType;
+        if (LoginType == "Operator")
+        {
+            Translators.Visibility = Visibility.Visible;
+            Notaries.Visibility = Visibility.Visible;
+            Customers.Visibility = Visibility.Visible;
+            ProjectManagers.Visibility = Visibility.Visible;
+            Translations.Visibility = Visibility.Visible;
+            Viewbox1.Visibility = Visibility.Visible;
+            Viewbox2.Visibility = Visibility.Visible;
+            Viewbox3.Visibility = Visibility.Visible;
+            Viewbox4.Visibility = Visibility.Visible;
+            Viewbox5.Visibility = Visibility.Visible;
+        }
+        CreateOrderType();
+    }
     //  true = тёмная, false = светлая
     private bool isDarkTheme = true;
     // URI для файлов тем
@@ -58,7 +112,7 @@ public partial class MainWindow : Window
     private readonly Uri lightThemeUri = new Uri("WhiteThem.xaml", UriKind.Relative);
     private void CreateOrder_OnClick(object sender, RoutedEventArgs e)
     {
-        Frame1.Source = new Uri("CreateOrder.xaml", UriKind.Relative);
+       CreateOrderType();
     }
     private void DeleteOrder_OnClick(object sender, RoutedEventArgs e)
     {
@@ -143,5 +197,16 @@ public partial class MainWindow : Window
        var window = new FeedbackWindow();
        window.ShowDialog();
     }
-    
+
+    private void AdminConsoleMenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        Frame1.Source = new Uri("AdminConsolePage.xaml", UriKind.Relative);
+    }
+
+    private void ExitFromTheSystemMenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        var window = new ChooseUserStatusInLogin();
+        window.Show();
+        Close();
+    }
 }
